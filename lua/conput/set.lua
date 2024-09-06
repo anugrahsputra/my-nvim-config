@@ -1,6 +1,22 @@
 local g = vim.g
 local opt = vim.opt
 
+-- default clipboard provider
+g.clipboard = {
+  name = 'WslClipboard',
+  copy = {
+    ['+'] = 'clip.exe',
+    ['*'] = 'clip.exe',
+  },
+  paste = {
+    ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+    ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+  },
+  cache_enabled = false,
+}
+
+opt.guicursor = ""
+
 opt.encoding = "utf-8"
 opt.fileencoding = "utf-8"
 
@@ -21,7 +37,7 @@ opt.autoindent = true
 opt.breakindent = true
 
 opt.wrap = false
-opt.cmdheight = 1
+opt.cmdheight = 3
 opt.swapfile = false
 opt.laststatus = 3
 opt.backup = false

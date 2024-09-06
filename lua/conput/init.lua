@@ -7,7 +7,6 @@ _G.dd = function(...)
 end
 vim.print = _G.dd
 
-
 require("conput.remap")
 require("conput.set")
 require("conput.lazy")
