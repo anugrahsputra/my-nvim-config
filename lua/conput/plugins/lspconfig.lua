@@ -68,6 +68,20 @@ return {
 					capabilities = capabilities,
 				})
 			end,
+			["gopls"] = function()
+				nvim_lsp["gopls"].setup({
+					on_attach = on_attach,
+					capabilities = capabilities,
+					settings = {
+						gopls = {
+							analyses = {
+								unusedparams = true,
+							},
+							staticcheck = true,
+						},
+					},
+				})
+			end,
 		})
 	end,
 }

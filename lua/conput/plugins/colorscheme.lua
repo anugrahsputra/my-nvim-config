@@ -5,34 +5,27 @@ end
 
 return {
 	{
+		"navarasu/onedark.nvim",
+		priority = 1000,
+		config = function()
+			require("onedark").setup({
+				style = "darker",
+			})
+		end,
+	},
+	{
 		"rose-pine/neovim",
 		name = "rose-pine",
-		priority = 1000,
 		config = function()
 			ColorMyPencils("rose-pine")
 			require("rose-pine").setup({
-				variant = "auto",
-				dark_variant = "main",
 				dim_inactive_windows = false,
 				disable_background = true,
-				highlight_groups = {
-					-- blend colours against the 'base' background
-					ColorColumn = { bg = "pine", blend = 40 },
-					CursorLine = { bg = "pine", blend = 21 },
 
-					Search = { bg = "rose", inherit = false },
-					FloatBorder = { bg = "none" },
-					LineNr = { fg = "#f6c177" }, -- gold
-
-					-- nvim-cmp
-					-- winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:None"
-					CmpPmenu = { bg = "#011b26" },
-					CmpSel = { bg = "pine" },
-					CmpDoc = { bg = "#011b26" },
-				},
 				styles = {
 					bold = false,
 					italic = false,
+					transparent = true,
 				},
 			})
 		end,

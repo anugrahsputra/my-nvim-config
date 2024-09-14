@@ -3,16 +3,16 @@ local opt = vim.opt
 
 -- default clipboard provider
 g.clipboard = {
-  name = 'WslClipboard',
-  copy = {
-    ['+'] = 'clip.exe',
-    ['*'] = 'clip.exe',
-  },
-  paste = {
-    ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-    ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-  },
-  cache_enabled = false,
+	name = "WslClipboard",
+	copy = {
+		["+"] = "clip.exe",
+		["*"] = "clip.exe",
+	},
+	paste = {
+		["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+		["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+	},
+	cache_enabled = false,
 }
 
 opt.guicursor = ""
@@ -37,7 +37,6 @@ opt.autoindent = true
 opt.breakindent = true
 
 opt.wrap = false
-opt.cmdheight = 3
 opt.swapfile = false
 opt.laststatus = 3
 opt.backup = false
@@ -55,8 +54,3 @@ opt.signcolumn = "yes"
 opt.isfname:append("@-@")
 
 opt.updatetime = 50
-
-if vim.fn.has("nvim-0.8") == 1 then
-	vim.opt.cmdheight = 0
-end
-
