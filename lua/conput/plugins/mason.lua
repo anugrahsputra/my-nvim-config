@@ -3,6 +3,7 @@ return {
 	dependencies = {
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		{ "j-hui/fidget.nvim", opts = {} },
 	},
 	config = function()
 		require("mason").setup()
@@ -16,6 +17,7 @@ return {
 				"jsonls",
 				"ts_ls",
 				"tailwindcss",
+				"kotlin_language_server",
 			},
 		})
 

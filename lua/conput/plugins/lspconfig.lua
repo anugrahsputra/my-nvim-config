@@ -3,7 +3,7 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
-		{ "folke/neodev.nvim", opts = {} },
+		{ "folke/lazydev.nvim", opts = {} },
 	},
 	config = function()
 		local nvim_lsp = require("lspconfig")
@@ -80,6 +80,12 @@ return {
 							staticcheck = true,
 						},
 					},
+				})
+			end,
+			["kotlin_language_server"] = function()
+				nvim_lsp.kotlin_language_server.setup({
+					on_attach = on_attach,
+					capabilities = capabilities,
 				})
 			end,
 		})

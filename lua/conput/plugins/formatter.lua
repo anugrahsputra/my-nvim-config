@@ -18,6 +18,7 @@ return {
 				lua = { "stylua" },
 				python = { "isort", "black" },
 				blade = { "blade-formatter" },
+				kotlin = { "ktlint" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
@@ -26,7 +27,7 @@ return {
 			},
 		})
 
-		vim.keymap.set({ "n", "v" }, "<leader>f", function()
+		vim.keymap.set({ "n", "v" }, "<leader>l", function()
 			conform.format({
 				lsp_fallback = true,
 				async = false,

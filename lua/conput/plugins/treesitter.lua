@@ -1,16 +1,16 @@
 return {
-  "nvim-treesitter/nvim-treesitter",
-  event = { "BufReadPre", "BufNewFile" },
-  build = ":TSUpdate",
-  dependencies = {
-    'windwp/nvim-ts-autotag',
-    'nvim-treesitter/nvim-treesitter-context',
-    'nvim-treesitter/playground',
-    'windwp/nvim-autopairs',
-    { "folke/neodev.nvim", opts = {}}
-  },
-  config = function()
-    local treesitter = require("nvim-treesitter.configs")
+	"nvim-treesitter/nvim-treesitter",
+	event = { "BufReadPre", "BufNewFile" },
+	build = ":TSUpdate",
+	dependencies = {
+		"windwp/nvim-ts-autotag",
+		"nvim-treesitter/nvim-treesitter-context",
+		"nvim-treesitter/playground",
+		"windwp/nvim-autopairs",
+		{ "folke/lazydev.nvim", opts = {} },
+	},
+	config = function()
+		local treesitter = require("nvim-treesitter.configs")
 
 		treesitter.setup({
 			highlight = {
@@ -37,7 +37,7 @@ return {
 				"dockerfile",
 				"gitignore",
 				"python",
-        "php",
+				"php",
 			},
 			incremental_selection = {
 				enable = true,
