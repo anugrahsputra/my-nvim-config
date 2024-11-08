@@ -13,6 +13,8 @@ return {
 			["s"] = "S", -- Select
 			["S"] = "SL", -- Select Line
 			["t"] = "T", -- Terminal
+			["r"] = "R",
+			["!"] = "S", -- Shell
 		}
 
 		local function get_mode()

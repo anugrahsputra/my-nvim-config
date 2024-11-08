@@ -19,6 +19,7 @@ return {
 				python = { "isort", "black" },
 				blade = { "blade-formatter" },
 				kotlin = { "ktlint" },
+				go = { "goimport" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
