@@ -17,6 +17,8 @@ g.clipboard = {
 
 opt.guicursor = ""
 
+opt.termguicolors = true
+
 opt.encoding = "utf-8"
 opt.fileencoding = "utf-8"
 
@@ -25,6 +27,7 @@ opt.showcmd = true
 
 opt.nu = true
 opt.relativenumber = true
+opt.numberwidth = 4
 opt.tabstop = 4
 
 opt.softtabstop = 4
@@ -38,7 +41,7 @@ opt.breakindent = true
 
 opt.wrap = false
 opt.swapfile = false
-opt.laststatus = 3
+opt.laststatus = 4
 opt.backup = false
 
 opt.hlsearch = false
@@ -46,10 +49,14 @@ opt.incsearch = true
 opt.inccommand = "split"
 opt.backspace = { "start", "eol", "indent" }
 opt.mouse = ""
+opt.cursorline = true
+
+opt.foldmethod = "indent"
+opt.foldlevel = 99
 
 opt.termguicolors = true
 
-opt.scrolloff = 10
+opt.scrolloff = 12
 opt.signcolumn = "yes"
 opt.isfname:append("@-@")
 

@@ -1,15 +1,17 @@
-function ColorMyPencils(color)
-	color = color or "rose-pine-moon"
-	vim.cmd.colorscheme(color)
-
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-end
-
 return {
+	{
+		"gbprod/nord.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("nord").setup({})
+			vim.cmd.colorscheme("nord")
+		end,
+	},
 	{
 		"navarasu/onedark.nvim",
 		priority = 1000,
+		name = "onedark",
 		config = function()
 			require("onedark").setup({
 				style = "darker",
@@ -116,7 +118,6 @@ return {
 		lazy = false,
 		priority = 1000,
 		config = function()
-			ColorMyPencils("oldworld")
 			require("oldworld").setup({
 				styles = {
 					booleans = { italic = true, bold = true },

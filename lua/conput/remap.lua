@@ -63,10 +63,6 @@ end, opts)
 keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
 keymap.set("t", "jj", [[<C-\><C-n>]], opts)
 
--- buffer
-keymap.set("n", "b[", "<cmd>bprev<CR>", opts)
-keymap.set("n", "b]", "<cmd>bnext<CR>", opts)
-
 -- change tabs
 keymap.set("n", "<tab>", "<cmd>tabn<CR>")
 keymap.set("n", "<S-tab>", "<cmd>tabp<CR>")
