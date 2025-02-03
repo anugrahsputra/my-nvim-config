@@ -1,3 +1,11 @@
+function ColorMyPenis(color)
+	color = color or "rose-pine"
+	vim.cmd.colorscheme(color)
+
+	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+end
+
 return {
 	{
 		"gbprod/nord.nvim",
@@ -5,7 +13,6 @@ return {
 		priority = 1000,
 		config = function()
 			require("nord").setup({})
-			vim.cmd.colorscheme("nord")
 		end,
 	},
 	{
@@ -22,6 +29,7 @@ return {
 		"rose-pine/neovim",
 		name = "rose-pine",
 		config = function()
+			ColorMyPenis("rose-pine")
 			require("rose-pine").setup({
 				dim_inactive_windows = false,
 				disable_background = true,

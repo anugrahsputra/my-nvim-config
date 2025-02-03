@@ -12,6 +12,8 @@ keymap.set("n", "q", ":q<Return>", opts)
 
 keymap.set("i", "jj", "<Esc>", opts)
 
+keymap.set("i", "JJ", "<Esc>", opts)
+
 -- split window
 keymap.set("n", "ss", ":split<Return>", opts)
 keymap.set("n", "sv", ":vsplit<Return>", opts)
@@ -28,12 +30,12 @@ keymap.set("n", "<A-l>", "<C-w>>")
 keymap.set("n", "<A-k>", "<C-w>+")
 keymap.set("n", "<A-j>", "<C-w>-")
 -- scroll
-keymap.set({ "n", "v" }, "H", "<C-u>", opts)
-keymap.set({ "n", "v" }, "L", "<C-d>", opts)
+keymap.set({ "n", "v" }, "H", "<C-b>", opts)
+keymap.set({ "n", "v" }, "L", "<C-f>", opts)
 
 -- go/back to definition
-keymap.set("n", "<leader>g", "<C-]>", opts) -- go to definition
-keymap.set("n", "<leader>t", "<C-t>", opts) -- back to definition
+keymap.set("n", "<leader>G", "<C-]>", opts) -- go to definition
+keymap.set("n", "<leader>T", "<C-t>", opts) -- back to definition
 
 keymap.set("n", "<leader>n", "<cmd>nohl<CR>", opts)
 

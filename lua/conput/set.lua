@@ -1,19 +1,21 @@
 local g = vim.g
 local opt = vim.opt
 
+-- if working in wsl, enable this code below
+
 -- default clipboard provider
-g.clipboard = {
-	name = "WslClipboard",
-	copy = {
-		["+"] = "clip.exe",
-		["*"] = "clip.exe",
-	},
-	paste = {
-		["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-		["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-	},
-	cache_enabled = false,
-}
+-- g.clipboard = {
+-- 	name = "WslClipboard",
+-- 	copy = {
+-- 		["+"] = "clip.exe",
+-- 		["*"] = "clip.exe",
+-- 	},
+-- 	paste = {
+-- 		["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+-- 		["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+-- 	},
+-- 	cache_enabled = false,
+-- }
 
 opt.guicursor = ""
 
@@ -56,7 +58,7 @@ opt.foldlevel = 99
 
 opt.termguicolors = true
 
-opt.scrolloff = 12
+opt.scrolloff = 15
 opt.signcolumn = "yes"
 opt.isfname:append("@-@")
 
