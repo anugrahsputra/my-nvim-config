@@ -3,7 +3,7 @@ local opt = vim.opt
 
 -- if working in wsl, enable this code below
 
--- default clipboard provider
+-- incase i'm using wsl
 -- g.clipboard = {
 -- 	name = "WslClipboard",
 -- 	copy = {
@@ -29,9 +29,8 @@ opt.showcmd = true
 
 opt.nu = true
 opt.relativenumber = true
-opt.numberwidth = 4
-opt.tabstop = 4
 
+opt.tabstop = 4
 opt.softtabstop = 4
 opt.shiftwidth = 4
 opt.expandtab = true
@@ -58,8 +57,10 @@ opt.foldlevel = 99
 
 opt.termguicolors = true
 
-opt.scrolloff = 15
+opt.scrolloff = 8
 opt.signcolumn = "yes"
 opt.isfname:append("@-@")
 
 opt.updatetime = 50
+
+opt.colorcolumn = "100"

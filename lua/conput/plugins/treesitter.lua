@@ -34,6 +34,7 @@ return {
 				"bash",
 				"lua",
 				"vim",
+				"kotlin",
 				"dockerfile",
 				"gitignore",
 				"python",
