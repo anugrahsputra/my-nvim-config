@@ -26,7 +26,7 @@ return {
 
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-		mason_lspconfig.setup_handlers({
+		mason_lspconfig.setup({
 			function(server)
 				nvim_lsp[server].setup({
 					capabilities = capabilities,

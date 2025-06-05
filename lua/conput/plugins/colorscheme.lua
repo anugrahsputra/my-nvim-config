@@ -147,7 +147,7 @@ return {
 		config = function()
 			require("kanso").setup({})
 
-			ColorMyPenis("kanso-ink")
+			ColorMyPenis("kanso-zen")
 		end,
 	},
 }

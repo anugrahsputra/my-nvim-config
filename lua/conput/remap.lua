@@ -12,7 +12,10 @@ keymap.set("n", "q", ":q<Return>", opts)
 
 keymap.set("i", "jj", "<Esc>", opts)
 
-keymap.set("i", "JJ", "<Esc>", opts)
+keymap.set("i", "Jj", "<Esc>", opts)
+
+-- cancel visual mode
+keymap.set("v", "q", "<Esc>", opts)
 
 -- split window
 keymap.set("n", "ss", ":split<Return>", opts)

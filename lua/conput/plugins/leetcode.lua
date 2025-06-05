@@ -10,6 +10,6 @@ return {
 	opts = {
 		-- configuration goes here
 		---@type lc.lang
-		lang = "cpp",
+		lang = "go",
 	},
 }
