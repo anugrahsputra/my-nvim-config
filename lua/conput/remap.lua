@@ -38,7 +38,7 @@ keymap.set({ "n", "v" }, "L", "<C-f>", opts)
 
 -- go/back to definition
 keymap.set("n", "<leader>G", "<C-]>", opts) -- go to definition
-keymap.set("n", "<leader>T", "<C-t>", opts) -- back to definition
+keymap.set("n", "<leader>B", "<C-o>", opts) -- back to definition
 
 keymap.set("n", "<leader>n", "<cmd>nohl<CR>", opts)
 
