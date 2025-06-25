@@ -12,6 +12,7 @@ return {
 		lazy = false,
 		priority = 1000,
 		config = function()
+			ColorMyPenis("nord")
 			require("nord").setup({})
 		end,
 	},
@@ -21,7 +22,7 @@ return {
 		name = "onedark",
 		config = function()
 			require("onedark").setup({
-				style = "darker",
+				style = "cool",
 			})
 		end,
 	},
@@ -146,8 +147,6 @@ return {
 		priority = 1000,
 		config = function()
 			require("kanso").setup({})
-
-			ColorMyPenis("kanso-zen")
 		end,
 	},
 }
