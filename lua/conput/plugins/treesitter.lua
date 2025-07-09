@@ -39,6 +39,7 @@ return {
 				"gitignore",
 				"python",
 				"php",
+				"go",
 			},
 			incremental_selection = {
 				enable = true,

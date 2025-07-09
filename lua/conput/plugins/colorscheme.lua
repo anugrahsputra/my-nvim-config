@@ -12,7 +12,6 @@ return {
 		lazy = false,
 		priority = 1000,
 		config = function()
-			ColorMyPenis("nord")
 			require("nord").setup({})
 		end,
 	},
@@ -146,6 +145,7 @@ return {
 		lazy = false,
 		priority = 1000,
 		config = function()
+			ColorMyPenis("kanso-ink")
 			require("kanso").setup({})
 		end,
 	},
