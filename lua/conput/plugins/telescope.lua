@@ -6,10 +6,13 @@ return {
 		"nvim-telescope/telescope-live-grep-args.nvim",
 	},
 	config = function()
+		local flutter_picker = require("conput.plugins.custom.flutter_telescope")
 		require("telescope").setup({})
 
 		-- set keymaps
 		local keymap = vim.keymap
+
+		keymap.set("n", "<leader>fl", flutter_picker.flutter_picker, { desc = "Flutter Commands Picker" })
 
 		keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
 		keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Fuzzy find recent files" })

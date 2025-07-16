@@ -11,7 +11,7 @@ return {
 				enabled = true,
 				map_keys = true,
 				key_bindings = {
-					accept = "<A-l>",
+					accept = "<C-s>",
 					accept_word = false,
 					accept_line = false,
 					clear = false,

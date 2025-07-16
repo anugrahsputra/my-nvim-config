@@ -2,8 +2,8 @@ function ColorMyPenis(color)
 	color = color or "rose-pine"
 	vim.cmd.colorscheme(color)
 
-	-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 end
 
 return {
@@ -145,8 +145,11 @@ return {
 		lazy = false,
 		priority = 1000,
 		config = function()
-			ColorMyPenis("kanso-ink")
-			require("kanso").setup({})
+			ColorMyPenis("kanso")
+			require("kanso").setup({
+				theme = "ink",
+				transparent = true,
+			})
 		end,
 	},
 }

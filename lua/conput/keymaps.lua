@@ -28,10 +28,10 @@ keymap.set("n", "sj", "<C-w>j", opts)
 keymap.set("n", "sk", "<C-w>k", opts)
 
 -- Resize window
-keymap.set("n", "<A-h>", "<C-w><")
-keymap.set("n", "<A-l>", "<C-w>>")
-keymap.set("n", "<A-k>", "<C-w>+")
-keymap.set("n", "<A-j>", "<C-w>-")
+keymap.set("n", "<C-h>", "<C-w><")
+keymap.set("n", "<C-l>", "<C-w>>")
+keymap.set("n", "<C-k>", "<C-w>+")
+keymap.set("n", "<C-j>", "<C-w>-")
 -- scroll
 keymap.set({ "n", "v" }, "H", "<C-b>", opts)
 keymap.set({ "n", "v" }, "L", "<C-f>", opts)
@@ -78,3 +78,11 @@ keymap.set("n", "tx", "<cmd>tabclose<CR>")
 -- code fold
 keymap.set("n", "fc", "zc", opts)
 keymap.set("n", "fo", "zo", opts)
+
+-- flutter
+keymap.set("n", "<leader>R", "<cmd>FlutterRun<cr>", { desc = "Flutter Run" })
+keymap.set("n", "<leader>d", "<cmd>FlutterDebug<cr>", { desc = "Flutter Debug" })
+keymap.set("n", "<leader>s", "<cmd>FlutterQuit<cr>", { desc = "Flutter Quit" })
+keymap.set("n", "<leader>r", "<cmd>FlutterHotReload<cr>", { desc = "Flutter Hot Reload" })
+keymap.set("n", "<leader>Rr", "<cmd>FlutterRestart<cr>", { desc = "Flutter Restart" })
+
