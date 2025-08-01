@@ -10,10 +10,6 @@ keymap.set("n", ";", ":", opts)
 keymap.set("n", "<leader>b", vim.cmd.Ex)
 keymap.set("n", "q", ":q<Return>", opts)
 
-keymap.set("i", "jj", "<Esc>", opts)
-
-keymap.set("i", "Jj", "<Esc>", opts)
-
 -- cancel visual mode
 keymap.set("v", "q", "<Esc>", opts)
 
