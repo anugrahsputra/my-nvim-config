@@ -24,10 +24,10 @@ keymap.set("n", "sj", "<C-w>j", opts)
 keymap.set("n", "sk", "<C-w>k", opts)
 
 -- Resize window
-keymap.set("n", "<C-h>", "<C-w><")
-keymap.set("n", "<C-l>", "<C-w>>")
-keymap.set("n", "<C-k>", "<C-w>+")
-keymap.set("n", "<C-j>", "<C-w>-")
+keymap.set("n", "<A-h>", "<C-w><")
+keymap.set("n", "<A-l>", "<C-w>>")
+keymap.set("n", "<A-k>", "<C-w>+")
+keymap.set("n", "<A-j>", "<C-w>-")
 -- scroll
 keymap.set({ "n", "v" }, "H", "<C-b>", opts)
 keymap.set({ "n", "v" }, "L", "<C-f>", opts)

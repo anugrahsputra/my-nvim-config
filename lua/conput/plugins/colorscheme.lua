@@ -29,9 +29,11 @@ return {
 		"rose-pine/neovim",
 		name = "rose-pine",
 		config = function()
+			ColorMyPenis("rose-pine")
 			require("rose-pine").setup({
 				dim_inactive_windows = false,
 				disable_background = true,
+				transparent = true,
 
 				styles = {
 					bold = false,
@@ -145,11 +147,17 @@ return {
 		lazy = false,
 		priority = 1000,
 		config = function()
-			ColorMyPenis("kanso")
 			require("kanso").setup({
 				theme = "ink",
 				transparent = true,
 			})
+			vim.api.nvim_set_hl(0, "RainbowDelimiterRed", { link = "Constant" })
+			vim.api.nvim_set_hl(0, "RainbowDelimiterYellow", { link = "Identifier" })
+			vim.api.nvim_set_hl(0, "RainbowDelimiterBlue", { link = "Function" })
+			vim.api.nvim_set_hl(0, "RainbowDelimiterOrange", { link = "Statement" })
+			vim.api.nvim_set_hl(0, "RainbowDelimiterGreen", { link = "Type" })
+			vim.api.nvim_set_hl(0, "RainbowDelimiterViolet", { link = "Special" })
+			vim.api.nvim_set_hl(0, "RainbowDelimiterCyan", { link = "String" })
 		end,
 	},
 }

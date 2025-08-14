@@ -40,6 +40,8 @@ return {
 				"python",
 				"php",
 				"go",
+				"dart",
+				"rust",
 			},
 			incremental_selection = {
 				enable = true,
