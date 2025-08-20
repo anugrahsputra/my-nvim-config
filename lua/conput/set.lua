@@ -50,7 +50,7 @@ opt.incsearch = true
 opt.inccommand = "split"
 opt.backspace = { "start", "eol", "indent" }
 opt.mouse = ""
-opt.cursorline = true
+opt.cursorline = false
 
 opt.foldmethod = "indent"
 opt.foldlevel = 99

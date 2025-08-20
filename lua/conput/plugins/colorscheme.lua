@@ -29,7 +29,6 @@ return {
 		"rose-pine/neovim",
 		name = "rose-pine",
 		config = function()
-			ColorMyPenis("rose-pine")
 			require("rose-pine").setup({
 				dim_inactive_windows = false,
 				disable_background = true,
@@ -158,6 +157,18 @@ return {
 			vim.api.nvim_set_hl(0, "RainbowDelimiterGreen", { link = "Type" })
 			vim.api.nvim_set_hl(0, "RainbowDelimiterViolet", { link = "Special" })
 			vim.api.nvim_set_hl(0, "RainbowDelimiterCyan", { link = "String" })
+		end,
+	},
+	{
+		"projekt0n/github-nvim-theme",
+		name = "github-theme",
+		lazy = false, -- make sure we load this during startup if it is your main colorscheme
+		priority = 1000, -- make sure to load this before all the other start plugins
+		config = function()
+			ColorMyPenis("github_dark_default")
+			require("github-theme").setup({
+				-- ...
+			})
 		end,
 	},
 }

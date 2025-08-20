@@ -4,7 +4,7 @@ local keymap = vim.keymap
 harpoon:setup()
 
 -- harpoon
-keymap.set("n", "<leader>a", function()
+keymap.set("n", "<leader>A", function()
 	harpoon:list():add()
 end)
 
