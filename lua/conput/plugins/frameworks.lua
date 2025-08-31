@@ -1,5 +1,27 @@
 return {
 	{
+		"jwalton512/vim-blade",
+		name = "vim-blade",
+		priority = 1000,
+		config = function()
+			vim.g.blade_fold_enable = true
+			vim.g.blade_fold_markers = {
+				["if"] = "endif",
+				["for"] = "endfor",
+				["foreach"] = "endforeach",
+				["while"] = "endwhile",
+				["switch"] = "endswitch",
+				["try"] = "endtry",
+				["catch"] = "catch",
+				["function"] = "endfunction",
+				["class"] = "endclass",
+			}
+		end,
+	},
+
+	{ "dart-lang/dart-vim-plugin" },
+
+	{
 		"nvim-flutter/flutter-tools.nvim",
 		lazy = false,
 		dependencies = { "nvim-lua/plenary.nvim", "stevearc/dressing.nvim" },
@@ -103,6 +125,19 @@ return {
 			vim.keymap.set("n", "<leader>du", dapui.toggle, { desc = "Toggle DAP UI" })
 		end,
 	},
+	{
+		"MeanderingProgrammer/render-markdown.nvim",
+		opts = {},
+		dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
+		config = function()
+			require("render-markdown").setup({})
+		end,
+	},
 
-	{ "dart-lang/dart-vim-plugin" },
+	-- rustace
+	{
+		"mrcjkb/rustaceanvim",
+		version = "^5", -- Recommended
+		lazy = false, -- This plugin is already lazy
+	},
 }
