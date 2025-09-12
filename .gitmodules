@@ -1,0 +1,3 @@
+[submodule "plugins/error-lens.nvim"]
+	path = plugins/error-lens.nvim
+	url = git@github.com:anugrahsputra/error-lens.nvim.git
