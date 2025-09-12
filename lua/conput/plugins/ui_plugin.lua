@@ -11,18 +11,18 @@ return {
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			local mode_map = {
-				["n"] = "N",
-				["i"] = "I",
-				["v"] = "V",
+				["n"] = "Norm",
+				["i"] = "Ins",
+				["v"] = "Vis",
 				["V"] = "VL", -- Visual Line
 				[""] = "VB", -- Visual Block
-				["c"] = "C", -- Command
-				["R"] = "R", -- Replace
-				["s"] = "S", -- Select
+				["c"] = "Cmd", -- Command
+				["R"] = "Repl", -- Replace
+				["s"] = "Sel", -- Select
 				["S"] = "SL", -- Select Line
-				["t"] = "T", -- Terminal
-				["r"] = "R",
-				["!"] = "S", -- Shell
+				["t"] = "Term", -- Terminal
+				["r"] = "Repl",
+				["!"] = "Sh", -- Shell
 			}
 
 			local function get_mode()
