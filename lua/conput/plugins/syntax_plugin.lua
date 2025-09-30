@@ -16,6 +16,10 @@ return {
 			local treesitter = require("nvim-treesitter.configs")
 
 			treesitter.setup({
+				modules = { "nvim-treesitter-context" },
+				ignore_install = {},
+				auto_install = true,
+				sync_install = true,
 				highlight = {
 					enable = true,
 					additional_vim_regex_highlighting = false,
@@ -86,6 +90,7 @@ return {
 	-- rainbow delimiters
 	{
 		"HiPhish/rainbow-delimiters.nvim",
+		branch = "main",
 		config = function()
 			-- You can leave it empty if you want default config
 			-- But you can customize below if needed

@@ -75,7 +75,17 @@ return {
 				end,
 				["kotlin_language_server"] = function()
 					nvim_lsp.kotlin_language_server.setup({
-						on_attach = on_attach,
+						on_attach = function(client, bufnr)
+							local fname = vim.api.nvim_buf_get_name(bufnr)
+
+							-- if file ends with build.gradle.kts -> disable formatting
+							if fname:match("build%.gradle%.kts$") then
+								client.server_capabilities.documentFormattingProvider = false
+								client.server_capabilities.documentRangeFormattingProvider = false
+							end
+
+							on_attach(client, bufnr)
+						end,
 						capabilities = capabilities,
 					})
 				end,
