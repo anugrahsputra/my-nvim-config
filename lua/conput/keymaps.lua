@@ -70,6 +70,7 @@ keymap.set("n", "<tab>", "<cmd>tabn<CR>")
 keymap.set("n", "<S-tab>", "<cmd>tabp<CR>")
 keymap.set("n", "te", "<cmd>tabedit<CR>")
 keymap.set("n", "tx", "<cmd>tabclose<CR>")
+keymap.set("n", "<S-r>", vim.lsp.buf.rename)
 
 -- code fold
 keymap.set("n", "fc", "zc", opts)

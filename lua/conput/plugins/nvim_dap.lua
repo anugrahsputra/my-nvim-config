@@ -8,7 +8,7 @@ return {
 		},
 		config = function()
 			require("dapui").setup()
-			require("nvim-dap-virtual-text").setup()
+			require("nvim-dap-virtual-text").setup({})
 
 			local dap = require("dap")
 			local dapui = require("dapui")
