@@ -29,8 +29,8 @@ keymap.set("n", "<A-l>", "<C-w>>")
 keymap.set("n", "<A-k>", "<C-w>+")
 keymap.set("n", "<A-j>", "<C-w>-")
 -- scroll
-keymap.set({ "n", "v" }, "H", "<C-b>", opts)
-keymap.set({ "n", "v" }, "L", "<C-f>", opts)
+keymap.set({ "n", "v" }, "H", "<C-u>", opts)
+keymap.set({ "n", "v" }, "L", "<C-d>", opts)
 
 -- go/back to definition
 keymap.set("n", "<leader>G", "<C-]>", opts) -- go to definition
