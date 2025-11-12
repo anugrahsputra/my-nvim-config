@@ -57,7 +57,7 @@ opt.foldlevel = 99
 
 opt.termguicolors = true
 
-opt.scrolloff = 8
+opt.scrolloff = 9999
 opt.signcolumn = "yes"
 opt.isfname:append("@-@")
 
