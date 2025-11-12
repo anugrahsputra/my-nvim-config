@@ -103,3 +103,36 @@ api.nvim_create_autocmd("FileType", {
 		set_indent(2, true)
 	end,
 })
+
+-- =====================
+--  Git / Version Control
+--  → tabs (common convention)
+-- =====================
+
+-- Git Commit Messages → tabs
+api.nvim_create_autocmd("FileType", {
+	pattern = "gitcommit",
+	callback = function()
+		set_indent(4, false)
+	end,
+})
+
+-- Git Rebase Messages → tabs
+api.nvim_create_autocmd("FileType", {
+	pattern = "gitrebase",
+	callback = function()
+		set_indent(4, false)
+	end,
+})
+
+-- =====================
+--  Miscellaneous
+-- =====================
+
+-- Markdown → tabs (common convention)
+api.nvim_create_autocmd("FileType", {
+	pattern = "markdown",
+	callback = function()
+		set_indent(4, false)
+	end,
+})
