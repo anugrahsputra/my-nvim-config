@@ -69,6 +69,63 @@ return {
 									unusedparams = true,
 								},
 								staticcheck = true,
+								hints = {
+									rangeVariableTypes = true,
+									parameterNames = true,
+									constantValues = true,
+									assignVariableTypes = true,
+									compositeLiteralFields = true,
+									compositeLiteralTypes = true,
+									functionTypeParameters = true,
+								},
+							},
+						},
+					})
+				end,
+				["rust_analyzer"] = function()
+					nvim_lsp["rust_analyzer"].setup({
+						on_attach = on_attach,
+						capabilities = capabilities,
+						settings = {
+							["rust-analyzer"] = {
+								diagnostics = {
+									enable = true,
+									experimental = {
+										enable = true,
+									},
+								},
+								inlayHints = {
+									bindingModeHints = {
+										enable = false,
+									},
+									chainingHints = {
+										enable = true,
+									},
+									closingBraceHints = {
+										enable = true,
+										minLines = 25,
+									},
+									closureReturnTypeHints = {
+										enable = "never",
+									},
+									lifetimeElisionHints = {
+										enable = "never",
+										useParameterNames = false,
+									},
+									maxLength = 25,
+									parameterHints = {
+										enable = true,
+									},
+									reborrowHints = {
+										enable = "never",
+									},
+									renderColons = true,
+									typeHints = {
+										enable = true,
+										hideClosureInitialization = false,
+										hideNamedConstructor = false,
+									},
+								},
 							},
 						},
 					})
@@ -87,6 +144,15 @@ return {
 							on_attach(client, bufnr)
 						end,
 						capabilities = capabilities,
+						settings = {
+							kotlin = {
+								hints = {
+									typeHints = true,
+									parameterHints = true,
+									chaineHints = true,
+								},
+							},
+						},
 					})
 				end,
 			})
@@ -157,7 +223,7 @@ return {
 					{ name = "luasnip" },
 					{ name = "buffer", options = { keyword_pattern = [[\k\+]] } },
 					{ name = "path" },
-					{ name = "supermaven" },
+					-- { name = "supermaven" },
 				}),
 			})
 
@@ -286,5 +352,14 @@ return {
 				},
 			},
 		},
+	},
+
+	-- inlay hints
+	{
+		"MysticalDevil/inlay-hints.nvim",
+		requires = { "neovim/nvim-lspconfig" },
+		config = function()
+			require("inlay-hints").setup()
+		end,
 	},
 }

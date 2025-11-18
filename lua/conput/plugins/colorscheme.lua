@@ -76,6 +76,7 @@ return {
 	{
 		"vague2k/vague.nvim",
 		config = function()
+			ColorMyPenis("vague")
 			require("vague").setup({
 				-- optional configuration here
 				transparent = true,
@@ -109,13 +110,13 @@ return {
 				colors = {
 					func = "#bc96b0",
 					keyword = "#787bab",
-					-- string = "#d4bd98",
-					string = "#8a739a",
+					string = "#d4bd98",
+					-- string = "#8a739a",
 					-- string = "#f2e6ff",
 					-- number = "#f2e6ff",
 					-- string = "#d8d5b1",
 					number = "#8f729e",
-					-- type = "#dcaed7",
+					type = "#dcaed7",
 				},
 			})
 		end,
@@ -173,7 +174,7 @@ return {
 	{
 		"nyoom-engineering/oxocarbon.nvim",
 		config = function()
-			ColorMyPenis("oxocarbon")
+			-- ColorMyPenis("oxocarbon")
 		end,
 		--   event = foo,
 		--   config = bar

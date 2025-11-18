@@ -7,11 +7,9 @@ local opts = { noremap = true, silent = true }
 g.mapleader = " "
 
 keymap.set("n", ";", ":", opts)
-keymap.set("n", "<leader>b", vim.cmd.Ex)
-keymap.set("n", "q", ":q<Return>", opts)
-
--- cancel visual mode
-keymap.set("v", "q", "<Esc>", opts)
+keymap.set("n", "<leader>e", vim.cmd.Ex)
+keymap.set("n", "<leader>q", ":bdelete<CR>", opts)
+keymap.set("n", "q", ":q<CR>", opts)
 
 -- split window
 keymap.set("n", "ss", ":split<Return>", opts)
@@ -24,10 +22,10 @@ keymap.set("n", "sj", "<C-w>j", opts)
 keymap.set("n", "sk", "<C-w>k", opts)
 
 -- Resize window
-keymap.set("n", "<A-h>", "<C-w><")
-keymap.set("n", "<A-l>", "<C-w>>")
-keymap.set("n", "<A-k>", "<C-w>+")
-keymap.set("n", "<A-j>", "<C-w>-")
+keymap.set("n", "<A-h>", "<C-w><", { noremap = false })
+keymap.set("n", "<A-l>", "<C-w>>", { noremap = false })
+keymap.set("n", "<A-k>", "<C-w>+", { noremap = false })
+keymap.set("n", "<A-j>", "<C-w>-", { noremap = false })
 -- scroll
 keymap.set({ "n", "v" }, "H", "<C-u>", opts)
 keymap.set({ "n", "v" }, "L", "<C-d>", opts)
@@ -82,3 +80,9 @@ keymap.set("n", "<leader>d", "<cmd>FlutterDebug<cr>", { desc = "Flutter Debug" }
 keymap.set("n", "<leader>s", "<cmd>FlutterQuit<cr>", { desc = "Flutter Quit" })
 keymap.set("n", "<leader>r", "<cmd>FlutterHotReload<cr>", { desc = "Flutter Hot Reload" })
 keymap.set("n", "<leader>Rr", "<cmd>FlutterRestart<cr>", { desc = "Flutter Restart" })
+
+-- inlay hints
+keymap.set("n", "gih", function()
+	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+	vim.notify("Inlay Hints " .. (vim.lsp.inlay_hint.is_enabled() and "enabled" or "disabled"))
+end, opts)
