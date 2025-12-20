@@ -29,6 +29,7 @@ return {
 		"rose-pine/neovim",
 		name = "rose-pine",
 		config = function()
+			ColorMyPenis("rose-pine")
 			require("rose-pine").setup({
 				dim_inactive_windows = false,
 				disable_background = true,
@@ -76,7 +77,6 @@ return {
 	{
 		"vague2k/vague.nvim",
 		config = function()
-			ColorMyPenis("vague")
 			require("vague").setup({
 				-- optional configuration here
 				transparent = true,

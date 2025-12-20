@@ -1,6 +1,5 @@
 local api = vim.api
 
--- Helper to set indentation
 local function set_indent(tab, expand)
 	vim.opt_local.tabstop = tab
 	vim.opt_local.shiftwidth = tab
@@ -8,131 +7,35 @@ local function set_indent(tab, expand)
 	vim.opt_local.expandtab = expand
 end
 
--- =====================
---  Programming Languages
--- =====================
-
--- Dart & Flutter → 2 spaces
 api.nvim_create_autocmd("FileType", {
-	pattern = "dart",
-	callback = function()
-		set_indent(2, true)
-	end,
-})
+	callback = function(args)
+		local ft = args.match
 
--- Kotlin & Java → 4 spaces
-api.nvim_create_autocmd("FileType", {
-	pattern = { "kotlin", "java" },
-	callback = function()
-		set_indent(4, true)
-	end,
-})
+		local rules = {
+			dart = { 2, true },
+			kotlin = { 4, true },
+			java = { 4, true },
+			go = { 8, false },
+			javascript = { 2, true },
+			typescript = { 2, true },
+			javascriptreact = { 2, true },
+			typescriptreact = { 2, true },
+			lua = { 2, true },
+			sql = { 4, true },
+			yaml = { 2, true },
+			json = { 2, true },
+			markdown = { 2, true },
+			html = { 2, true },
+			css = { 2, true },
+			scss = { 2, true },
+			gitcommit = { 4, false },
+			gitrebase = { 4, false },
+			rust = { 4, true },
+		}
 
--- Go → tabs
-api.nvim_create_autocmd("FileType", {
-	pattern = "go",
-	callback = function()
-		set_indent(4, false)
-	end,
-})
-
--- JavaScript, TypeScript, React → 2 spaces
-api.nvim_create_autocmd("FileType", {
-	pattern = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
-	callback = function()
-		set_indent(2, true)
-	end,
-})
-
--- Lua → 2 spaces
-api.nvim_create_autocmd("FileType", {
-	pattern = "lua",
-	callback = function()
-		set_indent(4, true)
-	end,
-})
-
--- SQL → 4 spaces
-api.nvim_create_autocmd("FileType", {
-	pattern = "sql",
-	callback = function()
-		set_indent(4, true)
-	end,
-})
-
--- =====================
---  Config / Markup Files
--- =====================
-
--- YAML → 2 spaces (common in Flutter, K8s, CI/CD)
-api.nvim_create_autocmd("FileType", {
-	pattern = "yaml",
-	callback = function()
-		set_indent(2, true)
-	end,
-})
-
--- JSON → 2 spaces
-api.nvim_create_autocmd("FileType", {
-	pattern = "json",
-	callback = function()
-		set_indent(2, true)
-	end,
-})
-
--- Markdown → 2 spaces
-api.nvim_create_autocmd("FileType", {
-	pattern = "markdown",
-	callback = function()
-		set_indent(2, true)
-	end,
-})
-
--- Dockerfile → tabs (common convention)
-api.nvim_create_autocmd("FileType", {
-	pattern = "dockerfile",
-	callback = function()
-		set_indent(4, false)
-	end,
-})
-
--- HTML / CSS / SCSS → 2 spaces
-api.nvim_create_autocmd("FileType", {
-	pattern = { "html", "css", "scss" },
-	callback = function()
-		set_indent(2, true)
-	end,
-})
-
--- =====================
---  Git / Version Control
---  → tabs (common convention)
--- =====================
-
--- Git Commit Messages → tabs
-api.nvim_create_autocmd("FileType", {
-	pattern = "gitcommit",
-	callback = function()
-		set_indent(4, false)
-	end,
-})
-
--- Git Rebase Messages → tabs
-api.nvim_create_autocmd("FileType", {
-	pattern = "gitrebase",
-	callback = function()
-		set_indent(4, false)
-	end,
-})
-
--- =====================
---  Miscellaneous
--- =====================
-
--- Markdown → tabs (common convention)
-api.nvim_create_autocmd("FileType", {
-	pattern = "markdown",
-	callback = function()
-		set_indent(4, false)
+		local rule = rules[ft]
+		if rule then
+			set_indent(rule[1], rule[2])
+		end
 	end,
 })

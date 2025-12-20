@@ -8,6 +8,7 @@ g.mapleader = " "
 
 keymap.set("n", ";", ":", opts)
 keymap.set("n", "<leader>e", vim.cmd.Ex)
+-- keymap.set("n", "<leader>e", ":Oil<CR>", opts)
 keymap.set("n", "<leader>q", ":bdelete<CR>", opts)
 keymap.set("n", "q", ":q<CR>", opts)
 

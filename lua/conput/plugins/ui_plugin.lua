@@ -11,11 +11,11 @@ return {
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			local mode_map = {
-				["n"] = "Norm",
-				["i"] = "Ins",
-				["v"] = "Vis",
-				["V"] = "VL", -- Visual Line
-				[""] = "VB", -- Visual Block
+				["n"] = "Normal",
+				["i"] = "Insert",
+				["v"] = "Visual",
+				["V"] = "VLine",
+				[""] = "V-Block",
 				["c"] = "Cmd", -- Command
 				["R"] = "Repl", -- Replace
 				["s"] = "Sel", -- Select
@@ -30,72 +30,72 @@ return {
 				return mode_map[mode] or mode:upper()
 			end
 
-			local lualineconfig = require("conput.plugins.custom.lualine")
-			require("lualine").setup(lualineconfig)
+			-- local lualineconfig = require("conput.plugins.custom.lualine")
+			-- require("lualine").setup(lualineconfig)
 
-			-- require("lualine").setup({
-			-- 	options = {
-			-- 		icons_enabled = true,
-			-- 		component_separators = { left = "", right = "" },
-			-- 		section_separators = { left = "", right = "" },
-			-- 		disabled_filetypes = {},
-			-- 		always_divide_middle = true,
-			-- 	},
-			-- 	sections = {
-			-- 		lualine_a = { get_mode },
-			-- 		lualine_b = { "branch", "diff", "diagnostics" },
-			-- 		lualine_c = {
-			-- 			{
-			-- 				function()
-			-- 					local path = vim.fn.expand("%:p")
-			-- 					local cwd = vim.fn.getcwd()
-			-- 					local relative_path = vim.fn.fnamemodify(path, ":~:.")
-			-- 					local readonly = vim.bo.readonly and " 󰌾 " or ""
-			-- 					local modified = vim.bo.modified and "" or ""
-			--
-			-- 					-- Highlight groups
-			-- 					local directory_hl = ""
-			-- 					local filename_hl = "%#Bold#"
-			-- 					local modified_hl = "%#MatchParen#"
-			--
-			-- 					-- Split the path into directory and filename
-			-- 					local dir, file = string.match(relative_path, "(.*/)(.*)")
-			-- 					if not dir then
-			-- 						dir = ""
-			-- 						file = relative_path
-			-- 					end
-			--
-			-- 					-- Apply highlighting
-			-- 					local result = directory_hl .. dir .. filename_hl .. file
-			--
-			-- 					-- Add modified and readonly indicators
-			-- 					if modified ~= "" then
-			-- 						result = result .. modified_hl .. modified
-			-- 					end
-			-- 					if readonly ~= "" then
-			-- 						result = result .. readonly
-			-- 					end
-			--
-			-- 					return result
-			-- 				end,
-			-- 				color = { gui = "bold" },
-			-- 			},
-			-- 		},
-			-- 		lualine_x = { "encoding", "fileformat", "filetype" },
-			-- 		lualine_y = { "progress" },
-			-- 		lualine_z = { "location" },
-			-- 	},
-			-- 	inactive_sections = {
-			-- 		lualine_a = {},
-			-- 		lualine_b = {},
-			-- 		lualine_c = { "filename" },
-			-- 		lualine_x = { "location" },
-			-- 		lualine_y = {},
-			-- 		lualine_z = {},
-			-- 	},
-			-- 	tabline = {},
-			-- 	extensions = {},
-			-- })
+			require("lualine").setup({
+				options = {
+					icons_enabled = true,
+					component_separators = { left = "", right = "" },
+					section_separators = { left = "", right = "" },
+					disabled_filetypes = {},
+					always_divide_middle = true,
+				},
+				sections = {
+					lualine_a = { get_mode },
+					lualine_b = { "branch", "diff", "diagnostics" },
+					lualine_c = {
+						{
+							function()
+								local path = vim.fn.expand("%:p")
+								local cwd = vim.fn.getcwd()
+								local relative_path = vim.fn.fnamemodify(path, ":~:.")
+								local readonly = vim.bo.readonly and " 󰌾 " or ""
+								local modified = vim.bo.modified and "" or ""
+
+								-- Highlight groups
+								local directory_hl = ""
+								local filename_hl = "%#Bold#"
+								local modified_hl = "%#MatchParen#"
+
+								-- Split the path into directory and filename
+								local dir, file = string.match(relative_path, "(.*/)(.*)")
+								if not dir then
+									dir = ""
+									file = relative_path
+								end
+
+								-- Apply highlighting
+								local result = directory_hl .. dir .. filename_hl .. file
+
+								-- Add modified and readonly indicators
+								if modified ~= "" then
+									result = result .. modified_hl .. modified
+								end
+								if readonly ~= "" then
+									result = result .. readonly
+								end
+
+								return result
+							end,
+							color = { gui = "bold" },
+						},
+					},
+					lualine_x = { "encoding", "fileformat", "filetype" },
+					lualine_y = { "progress" },
+					lualine_z = { "location" },
+				},
+				inactive_sections = {
+					lualine_a = {},
+					lualine_b = {},
+					lualine_c = { "filename" },
+					lualine_x = { "location" },
+					lualine_y = {},
+					lualine_z = {},
+				},
+				tabline = {},
+				extensions = {},
+			})
 		end,
 	},
 

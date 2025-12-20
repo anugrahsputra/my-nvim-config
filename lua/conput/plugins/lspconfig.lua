@@ -65,9 +65,7 @@ return {
 						capabilities = capabilities,
 						settings = {
 							gopls = {
-								analyses = {
-									unusedparams = true,
-								},
+								analyses = { unusedparams = true },
 								staticcheck = true,
 								hints = {
 									rangeVariableTypes = true,
@@ -88,37 +86,19 @@ return {
 						capabilities = capabilities,
 						settings = {
 							["rust-analyzer"] = {
-								diagnostics = {
-									enable = true,
-									experimental = {
-										enable = true,
-									},
-								},
+								diagnostics = { enable = true },
 								inlayHints = {
-									bindingModeHints = {
-										enable = false,
-									},
-									chainingHints = {
-										enable = true,
-									},
-									closingBraceHints = {
-										enable = true,
-										minLines = 25,
-									},
-									closureReturnTypeHints = {
-										enable = "never",
-									},
+									bindingModeHints = { enable = false },
+									chainingHints = { enable = true },
+									closingBraceHints = { enable = false },
+									closureReturnTypeHints = { enable = "never" },
 									lifetimeElisionHints = {
 										enable = "never",
 										useParameterNames = false,
 									},
 									maxLength = 25,
-									parameterHints = {
-										enable = true,
-									},
-									reborrowHints = {
-										enable = "never",
-									},
+									parameterHints = { enable = true },
+									reborrowHints = { enable = "never" },
 									renderColons = true,
 									typeHints = {
 										enable = true,
