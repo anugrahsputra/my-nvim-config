@@ -1,5 +1,5 @@
 function ColorMyPenis(color)
-	color = color or "rose-pine"
+	color = color or "rose-pine-moon"
 	vim.cmd.colorscheme(color)
 
 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -29,7 +29,7 @@ return {
 		"rose-pine/neovim",
 		name = "rose-pine",
 		config = function()
-			ColorMyPenis("rose-pine")
+			ColorMyPenis("rose-pine-moon")
 			require("rose-pine").setup({
 				dim_inactive_windows = false,
 				disable_background = true,
@@ -179,5 +179,14 @@ return {
 		--   event = foo,
 		--   config = bar
 		--   end,
+	},
+
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
+		config = function()
+			require("catppuccin").setup({})
+		end,
 	},
 }

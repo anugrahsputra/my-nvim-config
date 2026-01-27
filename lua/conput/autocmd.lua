@@ -15,7 +15,7 @@ api.nvim_create_autocmd("FileType", {
 			dart = { 2, true },
 			kotlin = { 4, true },
 			java = { 4, true },
-			go = { 8, false },
+			go = { 4, false },
 			javascript = { 2, true },
 			typescript = { 2, true },
 			javascriptreact = { 2, true },
