@@ -4,6 +4,7 @@ function ColorMyPenis(color)
 
 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+	vim.api.nvim_set_hl(0, "TreesitterContextBottom", { underline = false })
 end
 
 return {
@@ -29,7 +30,6 @@ return {
 		"rose-pine/neovim",
 		name = "rose-pine",
 		config = function()
-			ColorMyPenis("rose-pine-moon")
 			require("rose-pine").setup({
 				dim_inactive_windows = false,
 				disable_background = true,
@@ -186,7 +186,30 @@ return {
 		name = "catppuccin",
 		priority = 1000,
 		config = function()
-			require("catppuccin").setup({})
+			ColorMyPenis("catppuccin")
+			require("catppuccin").setup({
+				flavour = "macchiato",
+				background = { -- :h background
+					light = "latte",
+					dark = "macchiato",
+				},
+				transparent_background = true,
+				no_italic = true, -- Force no italic
+				no_bold = false, -- Force no bold
+				no_underline = true,
+				float = {
+					transparent = true, -- enable transparent floating windows
+					solid = true, -- use solid styling for floating windows, see |winborder|
+				},
+				inlay_hints = {
+					background = false,
+				},
+				styles = {
+					bold = false,
+					italic = false,
+					transparent = true,
+				},
+			})
 		end,
 	},
 }
