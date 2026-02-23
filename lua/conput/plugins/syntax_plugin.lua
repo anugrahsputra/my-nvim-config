@@ -104,12 +104,10 @@ return {
 	-- rainbow delimiters
 	{
 		"HiPhish/rainbow-delimiters.nvim",
-		branch = "main",
 		config = function()
 			-- You can leave it empty if you want default config
-			-- But you can customize below if needed
-			local rainbow_delimiters = require("rainbow-delimiters")
-
+			-- -- But you can customize below if needed local
+			rainbow_delimiters = require("rainbow-delimiters")
 			vim.g.rainbow_delimiters = {
 				strategy = {
 					[""] = rainbow_delimiters.strategy["global"],
@@ -119,14 +117,18 @@ return {
 					[""] = "rainbow-delimiters",
 					lua = "rainbow-blocks",
 				},
+				priority = {
+					[""] = 110,
+					lua = 210,
+				},
 				highlight = {
-					"RainbowDelimiterRed",
-					"RainbowDelimiterYellow",
-					"RainbowDelimiterBlue",
-					"RainbowDelimiterOrange",
-					"RainbowDelimiterGreen",
-					"RainbowDelimiterViolet",
-					"RainbowDelimiterCyan",
+					-- "RainbowDelimiterRed",
+					-- "RainbowDelimiterYellow",
+					-- "RainbowDelimiterBlue",
+					-- "RainbowDelimiterOrange",
+					-- "RainbowDelimiterGreen",
+					-- "RainbowDelimiterViolet",
+					-- "RainbowDelimiterCyan",
 				},
 			}
 		end,

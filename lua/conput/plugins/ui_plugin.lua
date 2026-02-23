@@ -16,13 +16,13 @@ return {
 				["v"] = "Visual",
 				["V"] = "VLine",
 				[""] = "V-Block",
-				["c"] = "Cmd", -- Command
-				["R"] = "Repl", -- Replace
-				["s"] = "Sel", -- Select
-				["S"] = "SL", -- Select Line
-				["t"] = "Term", -- Terminal
+				["c"] = "Cmd",
+				["R"] = "Repl",
+				["s"] = "Sel",
+				["S"] = "SL",
+				["t"] = "Term",
 				["r"] = "Repl",
-				["!"] = "Sh", -- Shell
+				["!"] = "Sh",
 			}
 
 			local function get_mode()
@@ -30,11 +30,34 @@ return {
 				return mode_map[mode] or mode:upper()
 			end
 
-			-- local lualineconfig = require("conput.plugins.custom.lualine")
-			-- require("lualine").setup(lualineconfig)
+			local ayu_dark = {
+				normal = {
+					a = { bg = "#e6b450", fg = "#0a0e14", gui = "bold" },
+					b = { bg = "#0f1419", fg = "#b3b1ad" },
+					c = { bg = "#0a0e14", fg = "#b3b1ad" },
+				},
+				insert = {
+					a = { bg = "#36a3d9", fg = "#0a0e14", gui = "bold" },
+				},
+				visual = {
+					a = { bg = "#95e6cb", fg = "#0a0e14", gui = "bold" },
+				},
+				replace = {
+					a = { bg = "#ff3333", fg = "#0a0e14", gui = "bold" },
+				},
+				command = {
+					a = { bg = "#b8cc52", fg = "#0a0e14", gui = "bold" },
+				},
+				inactive = {
+					a = { bg = "#0a0e14", fg = "#4d5566" },
+					b = { bg = "#0a0e14", fg = "#4d5566" },
+					c = { bg = "#0a0e14", fg = "#4d5566" },
+				},
+			}
 
 			require("lualine").setup({
 				options = {
+					theme = ayu_dark,
 					icons_enabled = true,
 					component_separators = { left = "", right = "" },
 					section_separators = { left = "", right = "" },
@@ -48,27 +71,23 @@ return {
 						{
 							function()
 								local path = vim.fn.expand("%:p")
-								local cwd = vim.fn.getcwd()
 								local relative_path = vim.fn.fnamemodify(path, ":~:.")
+
 								local readonly = vim.bo.readonly and " 󰌾 " or ""
 								local modified = vim.bo.modified and "" or ""
 
-								-- Highlight groups
 								local directory_hl = ""
 								local filename_hl = "%#Bold#"
 								local modified_hl = "%#MatchParen#"
 
-								-- Split the path into directory and filename
 								local dir, file = string.match(relative_path, "(.*/)(.*)")
 								if not dir then
 									dir = ""
 									file = relative_path
 								end
 
-								-- Apply highlighting
 								local result = directory_hl .. dir .. filename_hl .. file
 
-								-- Add modified and readonly indicators
 								if modified ~= "" then
 									result = result .. modified_hl .. modified
 								end
