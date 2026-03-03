@@ -5,6 +5,16 @@ function ColorMyPenis(color)
 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 	vim.api.nvim_set_hl(0, "TreesitterContextBottom", { underline = false })
+
+	-- Error Lens highlights
+	vim.api.nvim_set_hl(0, "ErrorLensErrorText", { fg = nil, bg = "#4B252C" })
+	vim.api.nvim_set_hl(0, "ErrorLensErrorBg", { fg = "#FF6363", bg = "#4B252C" })
+	vim.api.nvim_set_hl(0, "ErrorLensWarnText", { fg = nil, bg = "#403733" })
+	vim.api.nvim_set_hl(0, "ErrorLensWarnBg", { fg = "#FA973A", bg = "#403733" })
+	vim.api.nvim_set_hl(0, "ErrorLensInfoText", { fg = nil, bg = "#20355A" })
+	vim.api.nvim_set_hl(0, "ErrorLensInfoBg", { fg = "#387EFF", bg = "#20355A" })
+	vim.api.nvim_set_hl(0, "ErrorLensHintText", { fg = nil, bg = "#254435" })
+	vim.api.nvim_set_hl(0, "ErrorLensHintBg", { fg = "#16C53B", bg = "#254435" })
 end
 
 return {
@@ -14,16 +24,19 @@ return {
 			require("ayu").setup({
 				mirage = false, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
 				terminal = true, -- Set to `false` to let terminal manage its own colors.
-				-- overrides = {
-				Normal = { bg = "None" },
-				NormalFloat = { bg = "none" },
-				ColorColumn = { bg = "None" },
-				SignColumn = { bg = "None" },
-				Folded = { bg = "None" },
-				FoldColumn = { bg = "None" },
-				CursorLine = { bg = "None" },
-				CursorColumn = { bg = "None" },
-				VertSplit = { bg = "None" },
+				overrides = {
+					Normal = { bg = "None" },
+					NormalFloat = { bg = "none" },
+					ColorColumn = { bg = "None" },
+					SignColumn = { bg = "None" },
+					Folded = { bg = "None" },
+					FoldColumn = { bg = "None" },
+					CursorLine = { bg = "None" },
+					CursorColumn = { bg = "None" },
+					VertSplit = { bg = "None" },
+					LineNr = { fg = "#5c6773" },
+					CursorLineNr = { fg = "#ffcc66", bold = true },
+				},
 			})
 
 			ColorMyPenis("ayu")
