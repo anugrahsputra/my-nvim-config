@@ -57,6 +57,12 @@ return {
 		event = "LspAttach",
 		opts = {
 			prefix = "",
+			colors = {
+				error_bg = "NONE",
+				warn_bg = "NONE",
+				info_bg = "NONE",
+				hint_bg = "NONE",
+			},
 		},
 	},
 }

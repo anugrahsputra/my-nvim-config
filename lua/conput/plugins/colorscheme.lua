@@ -7,14 +7,20 @@ function ColorMyPenis(color)
 	vim.api.nvim_set_hl(0, "TreesitterContextBottom", { underline = false })
 
 	-- Error Lens highlights
-	vim.api.nvim_set_hl(0, "ErrorLensErrorText", { fg = nil, bg = "#4B252C" })
-	vim.api.nvim_set_hl(0, "ErrorLensErrorBg", { fg = "#FF6363", bg = "#4B252C" })
-	vim.api.nvim_set_hl(0, "ErrorLensWarnText", { fg = nil, bg = "#403733" })
-	vim.api.nvim_set_hl(0, "ErrorLensWarnBg", { fg = "#FA973A", bg = "#403733" })
-	vim.api.nvim_set_hl(0, "ErrorLensInfoText", { fg = nil, bg = "#20355A" })
-	vim.api.nvim_set_hl(0, "ErrorLensInfoBg", { fg = "#387EFF", bg = "#20355A" })
-	vim.api.nvim_set_hl(0, "ErrorLensHintText", { fg = nil, bg = "#254435" })
-	vim.api.nvim_set_hl(0, "ErrorLensHintBg", { fg = "#16C53B", bg = "#254435" })
+	vim.api.nvim_set_hl(0, "ErrorLensErrorText", { fg = nil, bg = "none" })
+	vim.api.nvim_set_hl(0, "ErrorLensErrorBg", { fg = "#FF6363", bg = "none" })
+	vim.api.nvim_set_hl(0, "ErrorLensWarnText", { fg = nil, bg = "none" })
+	vim.api.nvim_set_hl(0, "ErrorLensWarnBg", { fg = "#FA973A", bg = "none" })
+	vim.api.nvim_set_hl(0, "ErrorLensInfoText", { fg = nil, bg = "none" })
+	vim.api.nvim_set_hl(0, "ErrorLensInfoBg", { fg = "#387EFF", bg = "none" })
+	vim.api.nvim_set_hl(0, "ErrorLensHintText", { fg = nil, bg = "none" })
+	vim.api.nvim_set_hl(0, "ErrorLensHintBg", { fg = "#16C53B", bg = "none" })
+
+	-- Standard Diagnostic Virtual Text highlights
+	vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", { bg = "none" })
+	vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn", { bg = "none" })
+	vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo", { bg = "none" })
+	vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint", { bg = "none" })
 end
 
 return {
