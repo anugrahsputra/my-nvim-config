@@ -4,16 +4,16 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		event = { "BufReadPre", "BufNewFile" },
+		branch = "main",
 		build = ":TSUpdate",
 		dependencies = {
 			"windwp/nvim-ts-autotag",
 			"nvim-treesitter/nvim-treesitter-context",
-			"nvim-treesitter/playground",
 			"windwp/nvim-autopairs",
 			{ "folke/lazydev.nvim", opts = {} },
 		},
 		config = function()
-			local treesitter = require("nvim-treesitter.configs")
+			local treesitter = require("nvim-treesitter")
 
 			treesitter.setup({
 				ignore_install = {},
