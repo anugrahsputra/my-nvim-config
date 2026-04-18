@@ -107,7 +107,7 @@ return {
 		config = function()
 			-- You can leave it empty if you want default config
 			-- -- But you can customize below if needed local
-			rainbow_delimiters = require("rainbow-delimiters")
+			local rainbow_delimiters = require("rainbow-delimiters")
 			vim.g.rainbow_delimiters = {
 				strategy = {
 					[""] = rainbow_delimiters.strategy["global"],
