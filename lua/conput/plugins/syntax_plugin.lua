@@ -13,10 +13,8 @@ return {
 			{ "folke/lazydev.nvim", opts = {} },
 		},
 		config = function()
-			local treesitter = require("nvim-treesitter.config")
-
-			treesitter.setup({
-				install_dir = "",
+			require("nvim-treesitter").setup({
+				install_dir = vim.fn.stdpath("data") .. "/site",
 				ignore_install = {},
 				auto_install = true,
 				highlight = {
@@ -26,49 +24,6 @@ return {
 				indent = { enable = true },
 				autotag = {
 					enable = true,
-				},
-				ensure_installed = {
-					"json",
-					"javascript",
-					"typescript",
-					"tsx",
-					"yaml",
-					"html",
-					"css",
-					"markdown",
-					"markdown_inline",
-					"bash",
-					"lua",
-					"vim",
-					"kotlin",
-					"dockerfile",
-					"gitignore",
-					"python",
-					"php",
-					"go",
-					"gomod",
-					"gowork",
-					"gosum",
-					"dart",
-					"rust",
-				},
-				incremental_selection = {
-					enable = true,
-					keymaps = {
-						init_selection = "<C-space>",
-						node_incremental = "<C-space>",
-						scope_incremental = false,
-						node_decremental = "<bs>",
-					},
-				},
-				rainbow = {
-					enable = true,
-					extended_mode = false,
-					max_file_lines = nil,
-				},
-				context_commentstring = {
-					enable = true,
-					enable_autocmd = false,
 				},
 			})
 
