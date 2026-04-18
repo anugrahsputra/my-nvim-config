@@ -345,11 +345,11 @@ return {
 	},
 
 	-- inlay hints
-	{
-		"MysticalDevil/inlay-hints.nvim",
-		requires = { "neovim/nvim-lspconfig" },
-		config = function()
-			require("inlay-hints").setup()
-		end,
-	},
+	-- {
+	-- 	"MysticalDevil/inlay-hints.nvim",
+	-- 	requires = { "neovim/nvim-lspconfig" },
+	-- 	config = function()
+	-- 		require("inlay-hints").setup()
+	-- 	end,
+	-- },
 }

@@ -15,6 +15,7 @@ end)
 keymap.set("n", "[[", function()
 	harpoon:list():prev()
 end)
+
 keymap.set("n", "]]", function()
 	harpoon:list():next()
 end)

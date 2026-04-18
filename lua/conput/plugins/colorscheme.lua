@@ -44,7 +44,6 @@ return {
 					CursorLineNr = { fg = "#ffcc66", bold = true },
 				},
 			})
-
 			ColorMyPenis("ayu")
 		end,
 	},

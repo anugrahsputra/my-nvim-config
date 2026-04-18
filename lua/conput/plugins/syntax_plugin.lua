@@ -3,7 +3,7 @@ return {
 	-- treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
-		event = { "BufReadPre", "BufNewFile" },
+		event = { "BufReadPost", "BufNewFile" },
 		branch = "main",
 		build = ":TSUpdate",
 		dependencies = {
@@ -13,12 +13,12 @@ return {
 			{ "folke/lazydev.nvim", opts = {} },
 		},
 		config = function()
-			local treesitter = require("nvim-treesitter")
+			local treesitter = require("nvim-treesitter.config")
 
 			treesitter.setup({
+				install_dir = "",
 				ignore_install = {},
 				auto_install = true,
-				sync_install = true,
 				highlight = {
 					enable = true,
 					additional_vim_regex_highlighting = false,
@@ -46,6 +46,9 @@ return {
 					"python",
 					"php",
 					"go",
+					"gomod",
+					"gowork",
+					"gosum",
 					"dart",
 					"rust",
 				},
@@ -94,12 +97,12 @@ return {
 	},
 
 	-- colorizer
-	{
-		"norcalli/nvim-colorizer.lua",
-		config = function()
-			require("colorizer").setup({ "*" })
-		end,
-	},
+	-- {
+	-- 	"norcalli/nvim-colorizer.lua",
+	-- 	config = function()
+	-- 		require("colorizer").setup({ "*" })
+	-- 	end,
+	-- },
 
 	-- rainbow delimiters
 	{
