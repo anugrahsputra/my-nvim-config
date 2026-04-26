@@ -25,6 +25,15 @@ end
 
 return {
 	{
+
+		"oskarnurm/koda.nvim",
+		lazy = false, -- make sure we load this during startup if it is your main colorscheme
+		priority = 1000, -- make sure to load this before all the other start plugins
+		config = function()
+			require("koda").setup({ transparent = true })
+		end,
+	},
+	{
 		"shatur/neovim-ayu",
 		config = function()
 			require("ayu").setup({
@@ -44,6 +53,7 @@ return {
 					CursorLineNr = { fg = "#ffcc66", bold = true },
 				},
 			})
+
 			ColorMyPenis("ayu")
 		end,
 	},
