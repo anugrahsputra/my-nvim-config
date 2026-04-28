@@ -34,8 +34,8 @@ return {
 			local koda = {
 				normal = {
 					a = { bg = "#ff7676", fg = "#101010", gui = "bold" }, -- danger
-					b = { bg = "#272727", fg = "#b0b0b0" }, -- line + fg
-					c = { bg = "#101010", fg = "#b0b0b0" }, -- bg + fg
+					b = { bg = "none", fg = "#b0b0b0" },
+					c = { bg = "none", fg = "#b0b0b0" },
 				},
 				insert = {
 					a = { bg = "#86cd82", fg = "#101010", gui = "bold" }, -- success

@@ -21,6 +21,9 @@ function ColorMyPenis(color)
 	vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn", { bg = "none" })
 	vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo", { bg = "none" })
 	vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint", { bg = "none" })
+
+	vim.api.nvim_set_hl(0, "StatusLine", { bg = "none" })
+	vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "none" })
 end
 
 return {
