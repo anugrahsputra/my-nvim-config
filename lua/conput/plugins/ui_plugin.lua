@@ -30,43 +30,50 @@ return {
 				return mode_map[mode] or mode:upper()
 			end
 
-			local ayu_dark = {
+			-- ── Koda Theme ─────────────────────────────────
+			local koda = {
 				normal = {
-					a = { bg = "#e6b450", fg = "#0a0e14", gui = "bold" },
-					b = { bg = "#0f1419", fg = "#b3b1ad" },
-					c = { bg = "#0a0e14", fg = "#b3b1ad" },
+					a = { bg = "#ff7676", fg = "#101010", gui = "bold" }, -- danger
+					b = { bg = "#272727", fg = "#b0b0b0" }, -- line + fg
+					c = { bg = "#101010", fg = "#b0b0b0" }, -- bg + fg
 				},
 				insert = {
-					a = { bg = "#36a3d9", fg = "#0a0e14", gui = "bold" },
+					a = { bg = "#86cd82", fg = "#101010", gui = "bold" }, -- success
 				},
 				visual = {
-					a = { bg = "#95e6cb", fg = "#0a0e14", gui = "bold" },
+					a = { bg = "#5abfb5", fg = "#101010", gui = "bold" }, -- cyan
 				},
 				replace = {
-					a = { bg = "#ff3333", fg = "#0a0e14", gui = "bold" },
+					a = { bg = "#ff5733", fg = "#101010", gui = "bold" }, -- orange
 				},
 				command = {
-					a = { bg = "#b8cc52", fg = "#0a0e14", gui = "bold" },
+					a = { bg = "#d9ba73", fg = "#101010", gui = "bold" }, -- warning
 				},
 				inactive = {
-					a = { bg = "#0a0e14", fg = "#4d5566" },
-					b = { bg = "#0a0e14", fg = "#4d5566" },
-					c = { bg = "#0a0e14", fg = "#4d5566" },
+					a = { bg = "#101010", fg = "#474747" }, -- dim
+					b = { bg = "#101010", fg = "#474747" },
+					c = { bg = "#101010", fg = "#474747" },
 				},
 			}
 
 			require("lualine").setup({
 				options = {
-					theme = ayu_dark,
+					theme = koda,
 					icons_enabled = true,
 					component_separators = { left = "", right = "" },
 					section_separators = { left = "", right = "" },
-					disabled_filetypes = {},
 					always_divide_middle = true,
 				},
+
 				sections = {
 					lualine_a = { get_mode },
-					lualine_b = { "branch", "diff", "diagnostics" },
+
+					lualine_b = {
+						{ "branch", color = { fg = "#86cd82" } }, -- success
+						{ "diff", color = { fg = "#d9ba73" } }, -- warning
+						{ "diagnostics", color = { fg = "#ff7676" } }, -- danger
+					},
+
 					lualine_c = {
 						{
 							function()
@@ -76,7 +83,6 @@ return {
 								local readonly = vim.bo.readonly and " 󰌾 " or ""
 								local modified = vim.bo.modified and "" or ""
 
-								local directory_hl = ""
 								local filename_hl = "%#Bold#"
 								local modified_hl = "%#MatchParen#"
 
@@ -86,7 +92,7 @@ return {
 									file = relative_path
 								end
 
-								local result = directory_hl .. dir .. filename_hl .. file
+								local result = dir .. filename_hl .. file
 
 								if modified ~= "" then
 									result = result .. modified_hl .. modified
@@ -100,41 +106,42 @@ return {
 							color = { gui = "bold" },
 						},
 					},
+
 					lualine_x = { "encoding", "fileformat", "filetype" },
 					lualine_y = { "progress" },
 					lualine_z = { "location" },
 				},
+
 				inactive_sections = {
 					lualine_a = {},
 					lualine_b = {},
-					lualine_c = { "filename" },
+					lualine_c = { { "filename", color = { fg = "#474747" } } },
 					lualine_x = { "location" },
 					lualine_y = {},
 					lualine_z = {},
 				},
-				tabline = {},
-				extensions = {},
 			})
 		end,
 	},
 
 	-- indenting
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		main = "ibl",
-		opts = {},
-		config = function()
-			require("ibl").setup({
-				scope = {
-					show_start = false,
-					show_end = false,
-				},
-				indent = {
-					char = "│",
-				},
-			})
-		end,
-	},
+	-- {
+	-- 	"lukas-reineke/indent-blankline.nvim",
+	-- 	main = "ibl",
+	-- 	config = function()
+	-- 		require("ibl").setup({
+	-- 			indent = {
+	-- 				char = "", -- hide all indent lines
+	-- 			},
+	-- 			scope = {
+	-- 				enabled = true,
+	-- 				show_start = false,
+	-- 				show_end = false,
+	-- 				highlight = "CursorColumn", -- reuse highlight
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- },
 
 	-- incline
 	{
