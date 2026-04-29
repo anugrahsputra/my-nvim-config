@@ -83,7 +83,7 @@ return {
 				},
 				lsp = {
 					on_attach = require("conput.plugins.lsp.on_attach").on_attach,
-					capabilities = require("cmp_nvim_lsp").default_capabilities(),
+					capabilities = require("blink.cmp").get_lsp_capabilities(),
 					color = {
 						enabled = true,
 						background = false,
