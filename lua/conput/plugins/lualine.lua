@@ -23,26 +23,20 @@ return {
 		end
 
 		-- ── Koda Theme ─────────────────────────────────
+		local base = { bg = "#101010", fg = "#b0b0b0", gui = "bold" }
+
 		local koda = {
 			normal = {
-				a = { bg = "#ff7676", fg = "#101010", gui = "bold" }, -- danger
+				a = base,
 				b = { bg = "none", fg = "#b0b0b0" },
 				c = { bg = "none", fg = "#b0b0b0" },
 			},
-			insert = {
-				a = { bg = "#86cd82", fg = "#101010", gui = "bold" }, -- success
-			},
-			visual = {
-				a = { bg = "#5abfb5", fg = "#101010", gui = "bold" }, -- cyan
-			},
-			replace = {
-				a = { bg = "#ff5733", fg = "#101010", gui = "bold" }, -- orange
-			},
-			command = {
-				a = { bg = "#d9ba73", fg = "#101010", gui = "bold" }, -- warning
-			},
+			insert = { a = base },
+			visual = { a = base },
+			replace = { a = base },
+			command = { a = base },
 			inactive = {
-				a = { bg = "#101010", fg = "#474747" }, -- dim
+				a = { bg = "#101010", fg = "#474747" },
 				b = { bg = "#101010", fg = "#474747" },
 				c = { bg = "#101010", fg = "#474747" },
 			},
@@ -61,9 +55,8 @@ return {
 				lualine_a = { get_mode },
 
 				lualine_b = {
-					{ "branch", color = { fg = "#86cd82" } }, -- success
-					{ "diff", color = { fg = "#d9ba73" } }, -- warning
-					{ "diagnostics", color = { fg = "#ff7676" } }, -- danger
+					{ "diff", color = { fg = "#d9ba73" } },
+					{ "diagnostics", color = { fg = "#ff7676" } },
 				},
 
 				lualine_c = {
