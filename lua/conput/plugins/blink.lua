@@ -4,18 +4,16 @@ return {
 	version = "*",
 	opts = {
 		keymap = {
-			preset = "default",
-			["<CR>"] = { "select_and_accept", "fallback" },
+			preset = "enter",
 			["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
 			["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
-			["<C-n>"] = { "select_next", "fallback" },
-			["<C-p>"] = { "select_prev", "fallback" },
 		},
 		appearance = {
 			use_nvim_cmp_as_default = false,
 			nerd_font_variant = "mono",
 		},
 		completion = {
+			list = { selection = { preselect = true, auto_insert = true } },
 			menu = { border = "rounded" },
 			documentation = { window = { border = "rounded" } },
 		},
