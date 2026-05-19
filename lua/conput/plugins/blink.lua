@@ -5,6 +5,7 @@ return {
 	opts = {
 		keymap = {
 			preset = "enter",
+			["<CR>"] = { "accept", "fallback" }, -- explicit, overrides preset's CR
 			["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
 			["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
 		},
@@ -13,7 +14,12 @@ return {
 			nerd_font_variant = "mono",
 		},
 		completion = {
-			list = { selection = { preselect = true, auto_insert = true } },
+			list = {
+				selection = {
+					preselect = true,
+					auto_insert = false, -- ← key change
+				},
+			},
 			menu = { border = "rounded" },
 			documentation = { window = { border = "rounded" } },
 		},

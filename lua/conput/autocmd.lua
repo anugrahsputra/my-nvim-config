@@ -23,6 +23,7 @@ local ensure_installed = {
 	"gosum",
 	"dart",
 	"rust",
+	"proto",
 }
 
 local function set_indent(tab, expand)
