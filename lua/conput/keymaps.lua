@@ -7,10 +7,9 @@ local opts = { noremap = true, silent = true }
 g.mapleader = " "
 
 keymap.set("n", ";", ":", opts)
-keymap.set("n", "<leader>e", vim.cmd.Ex)
--- keymap.set("n", "<leader>e", ":Oil<CR>", opts)
+-- <leader>e and - are handled by oil.nvim (see plugins/oil.lua)
 keymap.set("n", "<leader>q", ":bdelete<CR>", opts)
-keymap.set("n", "q", ":q<CR>", opts)
+-- keymap.set("n", "q", ":q<CR>", opts)
 
 -- split window
 keymap.set("n", "ss", ":split<Return>", opts)
