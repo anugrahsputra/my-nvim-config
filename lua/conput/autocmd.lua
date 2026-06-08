@@ -96,3 +96,9 @@ api.nvim_create_autocmd("PackChanged", {
 		end
 	end,
 })
+
+api.nvim_create_autocmd("LspAttach", {
+	callback = function(ev)
+		vim.lsp.document_color.enable(true, { bufnr = ev.buf })
+	end,
+})
