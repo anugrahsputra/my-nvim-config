@@ -29,7 +29,11 @@ return {
 			local dap = require("dap")
 			local dapui = require("dapui")
 
+			local flutter_bin = vim.fn.getcwd() .. "/.fvm/flutter_sdk/bin/flutter"
+			local flutter_path = vim.fn.executable(flutter_bin) == 1 and flutter_bin or nil
+
 			require("flutter-tools").setup({
+				flutter_path = flutter_path,
 				fvm = true,
 				ui = {
 					border = "rounded",
