@@ -30,7 +30,17 @@ return {
 			local dapui = require("dapui")
 
 			local flutter_bin = vim.fn.getcwd() .. "/.fvm/flutter_sdk/bin/flutter"
-			local flutter_path = vim.fn.executable(flutter_bin) == 1 and flutter_bin or nil
+			local flutter_path = nil
+
+			if vim.fn.executable(flutter_bin) == 1 then
+				flutter_path = flutter_bin
+			else
+				-- Fallback to any installed FVM version if the local symlink is broken or not found
+				local fvm_sdk_list = vim.fn.glob(vim.fn.expand("~/fvm/versions/*/bin/flutter"), true, true)
+				if #fvm_sdk_list > 0 then
+					flutter_path = fvm_sdk_list[1]
+				end
+			end
 
 			require("flutter-tools").setup({
 				flutter_path = flutter_path,
