@@ -30,6 +30,7 @@ return {
 			local dapui = require("dapui")
 
 			require("flutter-tools").setup({
+				fvm = true,
 				ui = {
 					border = "rounded",
 					notification_style = "plugin",
@@ -46,7 +47,7 @@ return {
 				debugger = {
 					enabled = true,
 					run_via_dap = true,
-					register_configurations = function(_)
+					register_configurations = function(paths)
 						dapui.open()
 						dap.listeners.after.event_initialized["dapui_config"] = function()
 							dapui.open()
@@ -69,8 +70,8 @@ return {
 								type = "dart",
 								request = "launch",
 								name = "Launch Flutter App",
-								dartSdkPath = "/opt/homebrew/Caskroom/flutter/3.32.5/flutter/bin/cache/dart-sdk",
-								flutterSdkPath = "/opt/homebrew/Caskroom/flutter/3.32.5/flutter",
+								dartSdkPath = paths.dart_sdk,
+								flutterSdkPath = paths.flutter_sdk,
 								program = "${workspaceFolder}/lib/main.dart",
 								cwd = "${workspaceFolder}",
 							},
