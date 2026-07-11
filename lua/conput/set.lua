@@ -42,8 +42,9 @@ opt.breakindent = true
 
 opt.wrap = false
 opt.swapfile = false
-opt.laststatus = 4
+opt.laststatus = 0
 opt.backup = false
+opt.cmdheight = 0
 
 opt.hlsearch = false
 opt.incsearch = true
