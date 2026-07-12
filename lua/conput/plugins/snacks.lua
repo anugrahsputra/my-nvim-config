@@ -8,14 +8,14 @@ return {
 		-- or leave it empty to use the default settings
 		-- refer to the configuration section below
 		bigfile = { enabled = true },
-		dashboard = { enabled = true },
-		explorer = { enabled = true },
+		dashboard = { enabled = false },
+		explorer = { enabled = false },
 		image = { enabled = true },
 		indent = { enabled = false },
 		input = { enabled = true },
-		picker = { enabled = true },
+		picker = { enabled = false },
 		notifier = { enabled = true },
-		quickfile = { enabled = true },
+		quickfile = { enabled = false },
 		scope = { enabled = true },
 		scroll = { enabled = false },
 		statuscolumn = { enabled = true },
