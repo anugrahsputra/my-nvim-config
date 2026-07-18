@@ -17,7 +17,7 @@ Replace Supermaven inline completions with `minuet-ai.nvim` backed by Claude, wh
 Minuet virtual text provides the inline suggestion. Existing insert-mode controls retain their purpose:
 
 - `<C-y>` accepts the full suggestion.
-- `<C-j>` accepts the next word.
+- `<C-j>` accepts the current suggestion line.
 - `<C-]>` dismisses the suggestion.
 
 `nvim-cmp` continues to provide LSP, snippet, buffer, and path items in its popup menu. It is not modified to include Minuet, preventing duplicate AI suggestions.
