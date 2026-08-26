@@ -1,23 +1,21 @@
 return {
 	"supermaven-inc/supermaven-nvim",
+	event = "InsertEnter",
 	config = function()
 		require("supermaven-nvim").setup({
-			log_level = "off", -- set to "off" to disable logging completely
-			disable_inline_completion = false, -- disables inline completion for use with cmp
-			disable_keymaps = true, -- disables built in keymaps for more manual control
+			log_level = "off",
+			disable_inline_completion = false,
+
+			-- Native keymaps configured inside setup to prevent nil value errors
+			keymaps = {
+				accept_suggestion = "<C-y>",
+				clear_suggestion = "<C-]>",
+				accept_word = "<C-j>",
+			},
+
 			condition = function()
-				return true
+				return false -- Change to true if you want it globally active
 			end,
 		})
-
-		vim.keymap.set("i", "<C-y>", function()
-			require("supermaven-nvim.completion_preview").on_accept_suggestion()
-		end)
-		vim.keymap.set("i", "<C-]>", function()
-			require("supermaven-nvim.completion_preview").on_dispose_inlay()
-		end)
-		vim.keymap.set("i", "<C-j>", function()
-			require("supermaven-nvim.completion_preview").on_accept_suggestion_word()
-		end)
 	end,
 }
