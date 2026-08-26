@@ -31,8 +31,8 @@ return {
 				b = { bg = "none", fg = "#b0b0b0" },
 				c = { bg = "none", fg = "#b0b0b0" },
 			},
-			insert = { a = base },
-			visual = { a = base },
+			insert = { a = { bg = base.bg, fg = "#d9ba73", gui = "bold" } },
+			visual = { a = { bg = base.bg, fg = "#8ebeec", gui = "bold" } },
 			replace = { a = base },
 			command = { a = base },
 			inactive = {
