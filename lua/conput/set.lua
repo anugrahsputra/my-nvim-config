@@ -44,7 +44,7 @@ opt.wrap = false
 opt.swapfile = false
 opt.laststatus = 0
 opt.backup = false
-opt.cmdheight = 0
+opt.cmdheight = 1
 
 opt.hlsearch = false
 opt.incsearch = true

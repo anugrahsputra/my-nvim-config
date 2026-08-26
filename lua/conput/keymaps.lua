@@ -86,3 +86,35 @@ keymap.set("n", "gih", function()
 	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 	vim.notify("Inlay Hints " .. (vim.lsp.inlay_hint.is_enabled() and "enabled" or "disabled"))
 end, opts)
+
+-- Copy file path / selection reference for pasting into AI chats
+local function copy_ref(opts)
+	local path = vim.fn.expand("%:.")
+	local ref = path
+
+	if opts.visual then
+		local start_line = vim.fn.line("v")
+		local end_line = vim.fn.line(".")
+		if start_line > end_line then
+			start_line, end_line = end_line, start_line
+		end
+		ref = path .. ":" .. start_line .. ":" .. end_line
+	end
+
+	-- ask for an optional free-text note on the command line (Enter to skip)
+	local note = vim.fn.input("Prompt (optional): ")
+	if note ~= "" then
+		ref = ref .. " " .. note
+	end
+
+	vim.fn.setreg("+", ref)
+	vim.notify("Copied: " .. ref)
+end
+
+keymap.set("n", "<leader>cp", function()
+	copy_ref({})
+end, { desc = "Copy file path" })
+
+keymap.set("v", "<leader>cp", function()
+	copy_ref({ visual = true })
+end, { desc = "Copy file path with line range" })
