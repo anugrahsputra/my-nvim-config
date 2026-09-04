@@ -140,6 +140,24 @@ return {
 			vim.keymap.set("n", "<leader>du", dapui.toggle, { desc = "Toggle DAP UI" })
 		end,
 	},
+
+	{
+		"wa11breaker/flutter-bloc.nvim",
+		dependencies = {
+			{
+				"nvimtools/none-ls.nvim", -- Required for code actions
+				config = function()
+					require("null-ls").setup({})
+				end,
+			},
+		},
+		opts = {
+			bloc_type = "freezed", -- Choose from: 'default', 'equatable', 'freezed'
+			use_sealed_classes = true,
+			enable_code_actions = true,
+		},
+	},
+
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		opts = {},
