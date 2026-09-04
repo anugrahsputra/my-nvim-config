@@ -64,4 +64,5 @@ opt.isfname:append("@-@")
 
 opt.updatetime = 50
 
+opt.autoread = true
 -- opt.colorcolumn = "100"
