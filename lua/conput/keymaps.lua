@@ -42,8 +42,32 @@ keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 keymap.set("n", "gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
 
+-- nvim appends "[client]" to code action titles when more than one LSP client
+-- is attached. re-wrap on each use because dressing.nvim replaces vim.ui.select
+-- when it loads.
+local ui_select_wrapper
+local function strip_code_action_client()
+	if vim.ui.select == ui_select_wrapper then
+		return
+	end
+	local ui_select = vim.ui.select
+	ui_select_wrapper = function(items, select_opts, on_choice)
+		if select_opts and select_opts.kind == "codeaction" and select_opts.format_item then
+			local format_item = select_opts.format_item
+			select_opts = vim.tbl_extend("force", select_opts, {
+				format_item = function(item)
+					return (format_item(item):gsub("%s*%[[^%]]*%]%s*$", ""))
+				end,
+			})
+		end
+		return ui_select(items, select_opts, on_choice)
+	end
+	vim.ui.select = ui_select_wrapper
+end
+
 -- keymap for plugn
 keymap.set("n", "<leader>ca", function()
+	strip_code_action_client()
 	vim.lsp.buf.code_action()
 end, opts)
 
