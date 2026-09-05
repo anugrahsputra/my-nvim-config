@@ -29,6 +29,9 @@ return {
 					"kotlin_language_server",
 					"gopls",
 					"rust_analyzer",
+					"lua_ls",
+					"yamlls",
+					"taplo",
 				},
 				automatic_installation = true,
 				handlers = {
