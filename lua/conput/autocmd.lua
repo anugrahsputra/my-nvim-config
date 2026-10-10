@@ -24,6 +24,7 @@ local ensure_installed = {
 	"dart",
 	"rust",
 	"proto",
+	"gsx",
 }
 
 local function set_indent(tab, expand)
@@ -36,6 +37,18 @@ end
 local isnt_installed = function(lang)
 	return #vim.api.nvim_get_runtime_file("parser/" .. lang .. ".*", false) == 0
 end
+
+vim.filetype.add({ extension = { gsx = "gsx" } })
+
+-- gsx isn't in nvim-treesitter's registry; must be registered before install() runs
+api.nvim_create_autocmd("User", {
+	pattern = "TSUpdate",
+	callback = function()
+		require("nvim-treesitter.parsers").gsx = {
+			install_info = { url = "https://github.com/gsxhq/tree-sitter-gsx", queries = "queries" },
+		}
+	end,
+})
 
 local to_install = vim.tbl_filter(isnt_installed, ensure_installed)
 if #to_install > 0 then
@@ -61,6 +74,7 @@ api.nvim_create_autocmd("FileType", {
 			kotlin = { 4, true },
 			java = { 4, true },
 			go = { 4, false },
+			gsx = { 4, false },
 			javascript = { 2, true },
 			typescript = { 2, true },
 			javascriptreact = { 2, true },

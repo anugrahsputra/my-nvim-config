@@ -161,6 +161,16 @@ return {
 					end,
 				},
 			})
+
+			-- not in mason; install with `go install github.com/gsxhq/gsx/cmd/gsx@latest`
+			vim.lsp.config("gsx", {
+				cmd = { "gsx", "lsp" },
+				filetypes = { "gsx" },
+				root_markers = { "gsx.toml", "go.mod" },
+				on_attach = on_attach,
+				capabilities = capabilities,
+			})
+			vim.lsp.enable("gsx")
 		end,
 	},
 
