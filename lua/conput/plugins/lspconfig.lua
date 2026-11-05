@@ -32,6 +32,7 @@ return {
 					"lua_ls",
 					"yamlls",
 					"taplo",
+					"clangd",
 				},
 				automatic_installation = true,
 				handlers = {
