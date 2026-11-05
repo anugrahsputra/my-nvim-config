@@ -1,7 +1,5 @@
 local g = vim.g
-local api = vim.api
 local keymap = vim.keymap
-local lsp = vim.lsp.buf
 local opts = { noremap = true, silent = true }
 
 g.mapleader = " "
@@ -71,12 +69,21 @@ keymap.set("n", "<leader>ca", function()
 	vim.lsp.buf.code_action()
 end, opts)
 
+local function jump_diagnostic(count)
+	vim.diagnostic.jump({
+		count = count,
+		on_jump = function(_, bufnr)
+			vim.diagnostic.open_float({ bufnr = bufnr, scope = "cursor", focus = false })
+		end,
+	})
+end
+
 keymap.set("n", "<leader>j", function()
-	vim.diagnostic.goto_next()
+	jump_diagnostic(1)
 end, opts)
 
 keymap.set("n", "<leader>k", function()
-	vim.diagnostic.goto_previous()
+	jump_diagnostic(-1)
 end, opts)
 
 keymap.set("n", "J", function()
@@ -112,11 +119,11 @@ keymap.set("n", "gih", function()
 end, opts)
 
 -- Copy file path / selection reference for pasting into AI chats
-local function copy_ref(opts)
+local function copy_ref(args)
 	local path = vim.fn.expand("%:.")
 	local ref = path
 
-	if opts.visual then
+	if args.visual then
 		local start_line = vim.fn.line("v")
 		local end_line = vim.fn.line(".")
 		if start_line > end_line then
