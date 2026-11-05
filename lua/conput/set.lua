@@ -1,7 +1,11 @@
 local g = vim.g
+local o = vim.o
 local opt = vim.opt
 
--- if working in wsl, enable this code below
+-- oil.nvim owns directory buffers; nvim 0.13 ships its own read-only dir browser
+-- g.loaded_nvim_dir_plugin = 1
+
+--- if working in wsl, enable this code below
 
 -- incase i'm using wsl
 -- g.clipboard = {
@@ -16,53 +20,86 @@ local opt = vim.opt
 -- 	},
 -- 	cache_enabled = false,
 -- }
+local function is_remote()
+	if vim.env.SSH_CONNECTION or vim.env.SSH_TTY then
+		return true
+	end
+	-- herdr panes may drop the SSH vars, so treat a headless Linux box as remote
+	return vim.fn.has("linux") == 1 and not vim.env.DISPLAY and not vim.env.WAYLAND_DISPLAY
+end
 
-opt.guicursor = ""
+if is_remote() then
+	local osc52 = require("vim.ui.clipboard.osc52")
+	local last = { {}, "v" }
 
-opt.termguicolors = true
+	local function copy(reg)
+		local send = osc52.copy(reg)
+		return function(lines, regtype)
+			last = { lines, regtype }
+			send(lines)
+		end
+	end
 
-opt.encoding = "utf-8"
-opt.fileencoding = "utf-8"
+	g.clipboard = {
+		name = "OSC 52 copy, local paste",
+		copy = { ["+"] = copy("+"), ["*"] = copy("*") },
+		paste = {
+			["+"] = function()
+				return last
+			end,
+			["*"] = function()
+				return last
+			end,
+		},
+	}
+end
+opt.clipboard:append("unnamedplus")
 
-opt.title = true
-opt.showcmd = true
+o.guicursor = "n-v-c:block,i-ci-ve:ver25"
 
-opt.nu = true
-opt.relativenumber = true
+o.termguicolors = true
 
-opt.tabstop = 4
-opt.softtabstop = 4
-opt.shiftwidth = 4
-opt.expandtab = true
-opt.clipboard:append({ "unnamed", "unnamedplus" })
+o.encoding = "utf-8"
+o.fileencoding = "utf-8"
 
-opt.smartindent = true
-opt.autoindent = true
-opt.breakindent = true
+o.title = true
+o.showcmd = true
 
-opt.wrap = false
-opt.swapfile = false
-opt.laststatus = 0
-opt.backup = false
-opt.cmdheight = 1
+o.nu = true
+o.relativenumber = true
 
-opt.hlsearch = false
-opt.incsearch = true
-opt.inccommand = "split"
+o.tabstop = 4
+o.softtabstop = 4
+o.shiftwidth = 4
+o.expandtab = true
+
+o.smartindent = true
+o.autoindent = true
+o.breakindent = true
+
+o.wrap = false
+o.swapfile = false
+o.laststatus = 0
+o.backup = false
+o.cmdheight = 1
+
+o.hlsearch = false
+o.incsearch = true
+o.inccommand = "split"
 opt.backspace = { "start", "eol", "indent" }
-opt.mouse = ""
-opt.cursorline = false
+o.mouse = ""
+o.cursorline = false
 
-opt.foldmethod = "indent"
-opt.foldlevel = 99
+o.foldmethod = "indent"
+o.foldlevel = 99
 
-opt.termguicolors = true
+o.termguicolors = true
 
-opt.scrolloff = 9999
-opt.signcolumn = "yes"
+o.scrolloff = 9999
+o.signcolumn = "yes"
 opt.isfname:append("@-@")
 
-opt.updatetime = 50
+o.updatetime = 50
 
-opt.autoread = true
+o.autoread = true
 -- opt.colorcolumn = "100"
