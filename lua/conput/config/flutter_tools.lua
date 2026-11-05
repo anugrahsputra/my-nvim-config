@@ -1,0 +1,104 @@
+local dap = require("dap")
+local dapui = require("dapui")
+
+local flutter_bin = vim.fn.getcwd() .. "/.fvm/flutter_sdk/bin/flutter"
+local flutter_path = nil
+
+if vim.fn.executable(flutter_bin) == 1 then
+	flutter_path = flutter_bin
+else
+	-- Fallback to any installed FVM version if the local symlink is broken or not found
+	local fvm_sdk_list = vim.fn.glob(vim.fn.expand("~/fvm/versions/*/bin/flutter"), true, true)
+	if #fvm_sdk_list > 0 then
+		flutter_path = fvm_sdk_list[1]
+	end
+end
+
+require("flutter-tools").setup({
+	flutter_path = flutter_path,
+	fvm = true,
+	ui = {
+		border = "rounded",
+		notification_style = "plugin",
+	},
+	outline = {
+		open_cmd = "vnew",
+		auto_open = false,
+	},
+	closing_tags = {
+		highlight = "Comment",
+		prefix = "// ",
+		enabled = true,
+	},
+	debugger = {
+		enabled = true,
+		run_via_dap = true,
+		register_configurations = function(paths)
+			dapui.open()
+			dap.listeners.after.event_initialized["dapui_config"] = function()
+				dapui.open()
+			end
+			dap.listeners.before.event_terminated["dapui_config"] = function()
+				dapui.close()
+			end
+			dap.listeners.before.event_exited["dapui_config"] = function()
+				dapui.close()
+			end
+
+			dap.adapters.dart = {
+				type = "executable",
+				command = vim.fn.stdpath("data") .. "/mason/bin/dart-debug-adapter",
+				args = { "flutter" },
+			}
+
+			dap.configurations.dart = {
+				{
+					type = "dart",
+					request = "launch",
+					name = "Launch Flutter App",
+					dartSdkPath = paths.dart_sdk,
+					flutterSdkPath = paths.flutter_sdk,
+					program = "${workspaceFolder}/lib/main.dart",
+					cwd = "${workspaceFolder}",
+				},
+			}
+		end,
+	},
+	dev_log = {
+		enabled = false,
+		open_cmd = "tabedit",
+	},
+	lsp = {
+		on_attach = require("conput.config.lsp_on_attach").on_attach,
+		capabilities = require("cmp_nvim_lsp").default_capabilities(),
+		settings = {
+			showTodos = true,
+			completeFunctionCalls = true,
+			renameFilesWithClasses = "prompt",
+			enableSnippets = true,
+			enableSdkFormatter = true,
+			analysisExcludedFolders = {
+				".dart_tool",
+			},
+		},
+	},
+})
+
+-- Keymaps
+vim.keymap.set("n", "<F5>", dap.continue, { desc = "DAP Continue" })
+vim.keymap.set("n", "<F10>", dap.step_over, { desc = "DAP Step Over" })
+vim.keymap.set("n", "<F11>", dap.step_into, { desc = "DAP Step Into" })
+vim.keymap.set("n", "<F12>", dap.step_out, { desc = "DAP Step Out" })
+
+vim.keymap.set("n", "<leader>l", dap.toggle_breakpoint, { desc = "Toggle Breakpoint" })
+vim.keymap.set("n", "<leader>dB", function()
+	dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
+end, { desc = "Set Conditional Breakpoint" })
+
+vim.keymap.set("n", "<leader>dp", function()
+	dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
+end, { desc = "Set Log Point" })
+
+vim.keymap.set("n", "<leader>dr", dap.repl.open, { desc = "Open REPL" })
+vim.keymap.set("n", "<leader>dl", dap.run_last, { desc = "Run Last Debug Session" })
+vim.keymap.set("n", "<leader>du", dapui.toggle, { desc = "Toggle DAP UI" })

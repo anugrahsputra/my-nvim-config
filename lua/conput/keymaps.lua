@@ -1,7 +1,5 @@
 local g = vim.g
-local api = vim.api
 local keymap = vim.keymap
-local lsp = vim.lsp.buf
 local opts = { noremap = true, silent = true }
 
 g.mapleader = " "
@@ -71,12 +69,21 @@ keymap.set("n", "<leader>ca", function()
 	vim.lsp.buf.code_action()
 end, opts)
 
+local function jump_diagnostic(count)
+	vim.diagnostic.jump({
+		count = count,
+		on_jump = function(_, bufnr)
+			vim.diagnostic.open_float({ bufnr = bufnr, scope = "cursor", focus = false })
+		end,
+	})
+end
+
 keymap.set("n", "<leader>j", function()
-	vim.diagnostic.goto_next()
+	jump_diagnostic(1)
 end, opts)
 
 keymap.set("n", "<leader>k", function()
-	vim.diagnostic.goto_previous()
+	jump_diagnostic(-1)
 end, opts)
 
 keymap.set("n", "J", function()
@@ -112,11 +119,11 @@ keymap.set("n", "gih", function()
 end, opts)
 
 -- Copy file path / selection reference for pasting into AI chats
-local function copy_ref(opts)
+local function copy_ref(args)
 	local path = vim.fn.expand("%:.")
 	local ref = path
 
-	if opts.visual then
+	if args.visual then
 		local start_line = vim.fn.line("v")
 		local end_line = vim.fn.line(".")
 		if start_line > end_line then
@@ -142,3 +149,22 @@ end, { desc = "Copy file path" })
 keymap.set("v", "<leader>cp", function()
 	copy_ref({ visual = true })
 end, { desc = "Copy file path with line range" })
+
+keymap.set("v", "<leader>cc", function()
+	local start_pos, end_pos = vim.fn.getpos("v"), vim.fn.getpos(".")
+	local text = table.concat(vim.fn.getregion(start_pos, end_pos, { type = vim.fn.mode() }), "\n")
+
+	local start_line, end_line = math.min(start_pos[2], end_pos[2]), math.max(start_pos[2], end_pos[2])
+	local line = start_line == end_line and start_line or start_line .. "-" .. end_line
+
+	-- a longer fence keeps selections that contain ``` intact
+	local fence = "```"
+	while text:find(fence, 1, true) do
+		fence = fence .. "`"
+	end
+
+	local header = string.format('%s%s filename="%s" line=%s', fence, vim.bo.filetype, vim.fn.expand("%:."), line)
+	vim.fn.setreg("+", table.concat({ header, text, fence }, "\n"))
+	vim.cmd("normal! \27")
+	vim.notify("Copied code block")
+end, { desc = "Copy selection as markdown code block" })

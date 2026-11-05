@@ -44,7 +44,9 @@ vim.filetype.add({ extension = { gsx = "gsx" } })
 api.nvim_create_autocmd("User", {
 	pattern = "TSUpdate",
 	callback = function()
+		---@diagnostic disable-next-line: missing-fields
 		require("nvim-treesitter.parsers").gsx = {
+			---@diagnostic disable-next-line: missing-fields
 			install_info = { url = "https://github.com/gsxhq/tree-sitter-gsx", queries = "queries" },
 		}
 	end,
@@ -110,6 +112,11 @@ api.nvim_create_autocmd("PackChanged", {
 		end
 	end,
 })
+
+-- style is module-global in vim.lsp.document_color, so set it once here.
+-- passing opts on every LspAttach makes nvim clear *all* providers, including
+-- ones on already-wiped buffers -> "Invalid buffer id"
+vim.lsp.document_color.enable(false, nil, { style = "■" })
 
 api.nvim_create_autocmd("LspAttach", {
 	callback = function(ev)
