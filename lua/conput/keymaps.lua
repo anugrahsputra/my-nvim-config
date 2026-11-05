@@ -149,3 +149,22 @@ end, { desc = "Copy file path" })
 keymap.set("v", "<leader>cp", function()
 	copy_ref({ visual = true })
 end, { desc = "Copy file path with line range" })
+
+keymap.set("v", "<leader>cc", function()
+	local start_pos, end_pos = vim.fn.getpos("v"), vim.fn.getpos(".")
+	local text = table.concat(vim.fn.getregion(start_pos, end_pos, { type = vim.fn.mode() }), "\n")
+
+	local start_line, end_line = math.min(start_pos[2], end_pos[2]), math.max(start_pos[2], end_pos[2])
+	local line = start_line == end_line and start_line or start_line .. "-" .. end_line
+
+	-- a longer fence keeps selections that contain ``` intact
+	local fence = "```"
+	while text:find(fence, 1, true) do
+		fence = fence .. "`"
+	end
+
+	local header = string.format('%s%s filename="%s" line=%s', fence, vim.bo.filetype, vim.fn.expand("%:."), line)
+	vim.fn.setreg("+", table.concat({ header, text, fence }, "\n"))
+	vim.cmd("normal! \27")
+	vim.notify("Copied code block")
+end, { desc = "Copy selection as markdown code block" })
