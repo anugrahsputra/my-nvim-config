@@ -5,7 +5,7 @@ local opts = { noremap = true, silent = true }
 g.mapleader = " "
 
 keymap.set("n", ";", ":", opts)
--- <leader>e and - are handled by oil.nvim (see plugins/oil.lua)
+-- <leader>e and - are handled by oil.nvim (see plugins.lua)
 keymap.set("n", "<leader>q", ":bdelete<CR>", opts)
 -- keymap.set("n", "q", ":q<CR>", opts)
 
