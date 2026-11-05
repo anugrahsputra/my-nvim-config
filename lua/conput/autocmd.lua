@@ -44,7 +44,9 @@ vim.filetype.add({ extension = { gsx = "gsx" } })
 api.nvim_create_autocmd("User", {
 	pattern = "TSUpdate",
 	callback = function()
+		---@diagnostic disable-next-line: missing-fields
 		require("nvim-treesitter.parsers").gsx = {
+			---@diagnostic disable-next-line: missing-fields
 			install_info = { url = "https://github.com/gsxhq/tree-sitter-gsx", queries = "queries" },
 		}
 	end,

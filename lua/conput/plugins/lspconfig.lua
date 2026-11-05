@@ -4,15 +4,13 @@ return {
 		"neovim/nvim-lspconfig",
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
-			{ "folke/lazydev.nvim", opts = {} },
+			{ "folke/lazydev.nvim", opts = { library = { { path = "snacks.nvim", words = { "Snacks" } } } } },
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 		},
 		config = function()
 			local nvim_lsp = require("lspconfig")
 			local mason_lspconfig = require("mason-lspconfig")
-
-			local protocol = require("vim.lsp.protocol")
 
 			local on_attach = require("conput.plugins.lsp.on_attach").on_attach
 

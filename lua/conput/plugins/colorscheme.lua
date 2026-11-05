@@ -66,7 +66,7 @@ return {
 
 				-- You can modify or extend highlight groups using the `on_highlights` configuration option
 				-- Any changes made take effect when highlights are applied
-				on_highlights = function(hl, c)
+				on_highlights = function(_, _)
 					-- hl.Comment = { fg = c.emphasis, italic = true } -- modify a syntax group (add bold, italic, etc)
 					-- hl.LineNr = { fg = c.info } -- change a specific highlight to use a different palette color
 					-- hl.RainbowDelimiterRed = { fg = "#fb2b2b" } -- add a custom highlight group for another plugin

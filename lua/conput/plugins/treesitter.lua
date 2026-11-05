@@ -10,6 +10,7 @@ return {
 		{ "folke/lazydev.nvim", opts = {} },
 	},
 	config = function()
+		---@diagnostic disable-next-line: missing-fields
 		require("nvim-treesitter.config").setup({
 			-- install_dir = vim.fn.stdpath("data") .. "/site",
 			ignore_install = {},
