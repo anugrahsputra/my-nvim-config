@@ -111,6 +111,11 @@ api.nvim_create_autocmd("PackChanged", {
 	end,
 })
 
+-- style is module-global in vim.lsp.document_color, so set it once here.
+-- passing opts on every LspAttach makes nvim clear *all* providers, including
+-- ones on already-wiped buffers -> "Invalid buffer id"
+vim.lsp.document_color.enable(false, nil, { style = "■" })
+
 api.nvim_create_autocmd("LspAttach", {
 	callback = function(ev)
 		vim.lsp.document_color.enable(true, { bufnr = ev.buf })
