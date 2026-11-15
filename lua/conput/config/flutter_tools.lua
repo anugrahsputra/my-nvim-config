@@ -34,17 +34,6 @@ require("flutter-tools").setup({
 		enabled = true,
 		run_via_dap = true,
 		register_configurations = function(paths)
-			dapui.open()
-			dap.listeners.after.event_initialized["dapui_config"] = function()
-				dapui.open()
-			end
-			dap.listeners.before.event_terminated["dapui_config"] = function()
-				dapui.close()
-			end
-			dap.listeners.before.event_exited["dapui_config"] = function()
-				dapui.close()
-			end
-
 			dap.adapters.dart = {
 				type = "executable",
 				command = vim.fn.stdpath("data") .. "/mason/bin/dart-debug-adapter",
