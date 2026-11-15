@@ -5,7 +5,7 @@ return {
 	-- refer to the configuration section below
 	bigfile = { enabled = true },
 	dashboard = { enabled = false },
-	explorer = { enabled = false },
+	explorer = { enabled = true, replace_netrw = false },
 	image = { enabled = true },
 	indent = { enabled = false },
 	input = { enabled = true },

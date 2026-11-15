@@ -174,7 +174,7 @@ return {
 		end,
 		keys = {
 			{
-				"<leader>e",
+				"<leader>E",
 				function()
 					require("oil").open_float()
 				end,

@@ -73,7 +73,8 @@ The leader key is `Space`. This is a selection. The rest are in `lua/conput/keym
 | `H` / `L` | Scroll up / down half a page |
 | `ff` / `fg` | Find files / live grep with fff |
 | `<leader>ff` / `<leader>fg` | Find files / live grep with Telescope |
-| `<leader>e` / `-` | Open oil in a float / in the parent directory |
+| `<leader>e` | Toggle the snacks explorer sidebar |
+| `<leader>E` / `-` | Open oil in a float / in the parent directory |
 | `<leader>A` / `<leader>h` | Add file to harpoon / open the harpoon menu |
 | `[1` to `[5` | Jump to a harpoon slot |
 | `<leader>j` / `<leader>k` | Next / previous diagnostic |

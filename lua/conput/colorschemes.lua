@@ -5,6 +5,7 @@ function ColorMyPenis(color)
 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 	vim.api.nvim_set_hl(0, "TreesitterContextBottom", { underline = false })
+	vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#2a2a2a", bg = "none" })
 
 	-- Error Lens highlights
 	vim.api.nvim_set_hl(0, "ErrorLensErrorText", { fg = nil, bg = "none" })

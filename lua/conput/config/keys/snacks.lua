@@ -1,5 +1,12 @@
 return {
 	{
+		"<leader>e",
+		function()
+			Snacks.explorer()
+		end,
+		desc = "File explorer (sidebar)",
+	},
+	{
 		"gd",
 		function()
 			Snacks.picker.lsp_definitions()
