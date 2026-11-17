@@ -471,10 +471,11 @@ return {
 		keys = require("conput.config.keys.claudecode"),
 	},
 	{
-		"supermaven-inc/supermaven-nvim",
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
 		event = "InsertEnter",
 		config = function()
-			require("conput.config.supermaven")
+			require("conput.config.copilot")
 		end,
 	},
 
